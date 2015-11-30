@@ -1,1 +1,1 @@
-/home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/5kk70-assignment-gpu.dir
+/home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/5kk70-assignment-gpu.dir

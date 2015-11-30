@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/mjenkins/sfuhome/CMPT431/a4/contrast-enhancement.cpp
+/home/mjenkins/sfuhome/CMPT431A4/a4/contrast-enhancement.cpp
 stdio.h
 -
 string.h
@@ -14,11 +14,11 @@ string.h
 stdlib.h
 -
 hist-equ.h
-/home/mjenkins/sfuhome/CMPT431/a4/hist-equ.h
+/home/mjenkins/sfuhome/CMPT431A4/a4/hist-equ.h
 
-/home/mjenkins/sfuhome/CMPT431/a4/hist-equ.h
+/home/mjenkins/sfuhome/CMPT431A4/a4/hist-equ.h
 
-/home/mjenkins/sfuhome/CMPT431/a4/histogram-equalization.cpp
+/home/mjenkins/sfuhome/CMPT431A4/a4/histogram-equalization.cpp
 stdio.h
 -
 string.h
@@ -26,9 +26,9 @@ string.h
 stdlib.h
 -
 hist-equ.h
-/home/mjenkins/sfuhome/CMPT431/a4/hist-equ.h
+/home/mjenkins/sfuhome/CMPT431A4/a4/hist-equ.h
 
-/home/mjenkins/sfuhome/CMPT431/a4/main.cpp
+/home/mjenkins/sfuhome/CMPT431A4/a4/main.cpp
 stdio.h
 -
 string.h
@@ -44,7 +44,7 @@ helper_functions.h
 helper_timer.h
 -
 hist-equ.h
-/home/mjenkins/sfuhome/CMPT431/a4/hist-equ.h
+/home/mjenkins/sfuhome/CMPT431A4/a4/hist-equ.h
 
 /usr/local/cuda/include/builtin_types.h
 device_types.h

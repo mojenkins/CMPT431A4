@@ -10,24 +10,24 @@
 #include <helper_functions.h>
 
 
-__global__ void histogram_work()
-void gpu_histogram(int * hist_out, unsigned char * img_in, int img_size, int nbr_bin){
-    int i;
-    for ( i = 0; i < nbr_bin; i ++){
-        hist_out[i] = 0;
+__global__ void histogram_work(int d, int min, int nbr_bin, int* gpu_cdf, 
+                        int* gpu_lut, unsigned char* gpu_img_in, unsigned char* gpu_img_out){
+    if (blockIdx.x < 256){
+        int lut = (int)(((float)gpu_cdf[blockIdx.x] - min)*255/d + 0.5);
+        gpu_lut[blockIdx.x] = (lut <= 0)? 0 : lut;
     }
 
-    for ( i = 0; i < img_size; i ++){
-        hist_out[img_in[i]] ++;
-    }
+    gpu_img_out[blockIdx.x] = (gpu_lut[gpu_img_in[blockIdx.x]] > 255) ? 255 : gpu_lut[gpu_img_in[blockIdx.x]];
 }
 
-void gpu_histogram_equalization(unsigned char * img_out, unsigned char * img_in, 
+
+void gpu_histogram_equalization(unsigned char * img_out, unsigned char * img_in,
                             int * hist_in, int img_size, int nbr_bin){
     //int *lut = (int *)malloc(sizeof(int)*nbr_bin);
-    int i, cdf, min, d;
+    int i, min, d;
+    int cdf[256];
+
     /* Construct the LUT by calculating the CDF */
-    cdf = 0;
     min = 0;
     i = 0;
     while(min == 0){
@@ -37,18 +37,25 @@ void gpu_histogram_equalization(unsigned char * img_out, unsigned char * img_in,
 
     // Set up pointers for gpu device memory
     unsigned char * gpu_img_in, * gpu_img_out;
-    int * gpu_hist_in, * gpu_lut;
+    int  * gpu_lut, * gpu_cdf;
 
     // Allocate memory for img_in, hist_in, lut, and img_out
-    HANDLE_ERROR( cudaMalloc( (void**)&gpu_img_in, img_size * sizeof(unsigned char) ) );
-    HANDLE_ERROR( cudaMalloc( (void**)&gpu_img_out, img_size * sizeof(unsigned char) ) );
-    HANDLE_ERROR( cudaMalloc( (void**)&gpu_hist_in, (nbr_bin-1) * sizeof(int) ) );
-    HANDLE_ERROR( cudaMalloc( (void**)&gpu_lut, (nbr_bin-1) * sizeof(int) ) );
+    cudaMalloc( (void**)&gpu_img_in, img_size * sizeof(unsigned char) );
+    cudaMalloc( (void**)&gpu_img_out, img_size * sizeof(unsigned char) );
+    cudaMalloc( (void**)&gpu_lut, (nbr_bin) * sizeof(int) );
+    cudaMalloc( (void**)&gpu_cdf, sizeof(int) );
 
-    // Copy img_in and hist_in to gpu
-    HANDLE_ERROR( cudaMemcpy( gpu_img_in, img_in, img_size * sizeof(unsigned char), cudaMemcpyHostToDevice ) );
-    HANDLE_ERROR( cudaMemcpy( gpu_hist_in, hist_in, (nbr_bin-1) * sizeof(int), cudaMemcpyHostToDevice ) );
+    // Calculate cdf sequentially
+    cdf[0] = hist_in[0];
+    for(i = 1; i < nbr_bin; i ++){
+        cdf[i] = cdf[i-1] + hist_in[i];
+    }
 
+    // Copy img_in and cdf to gpu
+    cudaMemcpy( gpu_img_in, img_in, img_size * sizeof(unsigned char), cudaMemcpyHostToDevice );
+    cudaMemcpy( gpu_cdf, cdf, (nbr_bin) * sizeof(int), cudaMemcpyHostToDevice );
+
+    
     // sequential version
     // for(i = 0; i < nbr_bin; i ++){
     //     cdf += hist_in[i];
@@ -72,9 +79,17 @@ void gpu_histogram_equalization(unsigned char * img_out, unsigned char * img_in,
         
     // }
 
-    // gpu version
+    // GPU version
+    // call kernel
+    histogram_work<<<img_size,1>>>(d, min, nbr_bin, gpu_cdf, gpu_lut, gpu_img_in, gpu_img_out);
 
-    //call kernel
     // copy back (using cudaMemcpy) gpu_img_out to img_out
+    cudaMemcpy( img_out, gpu_img_out, img_size * sizeof(unsigned char), cudaMemcpyDeviceToHost );
+
+    // free gpu memory
+    cudaFree(gpu_img_out);
+    cudaFree(gpu_img_in);
+    cudaFree(gpu_lut);
+    cudaFree(gpu_cdf);
 }
 
