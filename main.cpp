@@ -22,7 +22,7 @@ int main(){
     PPM_IMG img_ibuf_c;
 
     //testing that I've set up cuda properly. Should output: "output_num: 9"
-    cuda_test();
+    //cuda_test();
     
     printf("Running contrast enhancement for gray-scale images.\n");
     img_ibuf_g = read_pgm("in.pgm");

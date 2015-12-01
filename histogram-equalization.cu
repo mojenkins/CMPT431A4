@@ -12,12 +12,12 @@
 
 __global__ void histogram_work(int d, int min, int nbr_bin, int* gpu_cdf, 
                         int* gpu_lut, unsigned char* gpu_img_in, unsigned char* gpu_img_out){
-    if (blockIdx.x < 256){
-        int lut = (int)(((float)gpu_cdf[blockIdx.x] - min)*255/d + 0.5);
-        gpu_lut[blockIdx.x] = (lut <= 0)? 0 : lut;
-    }
+	if (blockIdx.x + threadIdx.x < 256){
+	    int lut = (int)(((float)gpu_cdf[blockIdx.x + threadIdx.x] - min)*255/d + 0.5);
+	    gpu_lut[blockIdx.x + threadIdx.x] = (lut <= 0)? 0 : lut;
+	}
 
-    gpu_img_out[blockIdx.x] = (gpu_lut[gpu_img_in[blockIdx.x]] > 255) ? 255 : gpu_lut[gpu_img_in[blockIdx.x]];
+    gpu_img_out[blockIdx.x + threadIdx.x] = (gpu_lut[gpu_img_in[blockIdx.x + threadIdx.x]] > 255) ? 255 : gpu_lut[gpu_img_in[blockIdx.x + threadIdx.x]];
 }
 
 
@@ -43,7 +43,7 @@ void gpu_histogram_equalization(unsigned char * img_out, unsigned char * img_in,
     cudaMalloc( (void**)&gpu_img_in, img_size * sizeof(unsigned char) );
     cudaMalloc( (void**)&gpu_img_out, img_size * sizeof(unsigned char) );
     cudaMalloc( (void**)&gpu_lut, (nbr_bin) * sizeof(int) );
-    cudaMalloc( (void**)&gpu_cdf, sizeof(int) );
+    cudaMalloc( (void**)&gpu_cdf, nbr_bin * sizeof(int) );
 
     // Calculate cdf sequentially
     cdf[0] = hist_in[0];
@@ -81,7 +81,7 @@ void gpu_histogram_equalization(unsigned char * img_out, unsigned char * img_in,
 
     // GPU version
     // call kernel
-    histogram_work<<<img_size,1>>>(d, min, nbr_bin, gpu_cdf, gpu_lut, gpu_img_in, gpu_img_out);
+    histogram_work<<<img_size/512,512>>>(d, min, nbr_bin, gpu_cdf, gpu_lut, gpu_img_in, gpu_img_out);
 
     // copy back (using cudaMemcpy) gpu_img_out to img_out
     cudaMemcpy( img_out, gpu_img_out, img_size * sizeof(unsigned char), cudaMemcpyDeviceToHost );
