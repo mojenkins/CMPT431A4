@@ -4,9 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/mjenkins/sfuhome/CMPT431/a4/contrast-enhancement.cpp" "/home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/5kk70-assignment-gpu.dir/contrast-enhancement.cpp.o"
-  "/home/mjenkins/sfuhome/CMPT431/a4/histogram-equalization.cpp" "/home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/5kk70-assignment-gpu.dir/histogram-equalization.cpp.o"
-  "/home/mjenkins/sfuhome/CMPT431/a4/main.cpp" "/home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/5kk70-assignment-gpu.dir/main.cpp.o"
+  "/home/mjenkins/sfuhome/CMPT431A4/a4/contrast-enhancement.cpp" "/home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/5kk70-assignment-gpu.dir/contrast-enhancement.cpp.o"
+  "/home/mjenkins/sfuhome/CMPT431A4/a4/histogram-equalization.cpp" "/home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/5kk70-assignment-gpu.dir/histogram-equalization.cpp.o"
+  "/home/mjenkins/sfuhome/CMPT431A4/a4/main.cpp" "/home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/5kk70-assignment-gpu.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

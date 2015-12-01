@@ -2,12 +2,6 @@
 #include <string.h>
 #include <stdlib.h>
 #include "hist-equ.h"
-// CUDA Runtime
-#include <cuda_runtime.h>
-// Utility and system includes
-#include <helper_cuda.h>
-// helper for shared that are common to CUDA Samples
-#include <helper_functions.h>
 
 
 void histogram(int * hist_out, unsigned char * img_in, int img_size, int nbr_bin){

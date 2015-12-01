@@ -53,9 +53,17 @@ void histogram(int * hist_out, unsigned char * img_in, int img_size, int nbr_bin
 void histogram_equalization(unsigned char * img_out, unsigned char * img_in, 
                             int * hist_in, int img_size, int nbr_bin);
 
+void gpu_histogram_equalization(unsigned char * img_out, unsigned char * img_in, 
+                            int * hist_in, int img_size, int nbr_bin);
+
+void cuda_test();
+
 
 //Contrast enhancement for gray-scale images
 PGM_IMG contrast_enhancement_g(PGM_IMG img_in);
+
+//Gpu version
+PGM_IMG gpu_contrast_enhancement_g(PGM_IMG img_in);
 
 //Contrast enhancement for color images
 PPM_IMG contrast_enhancement_c_rgb(PPM_IMG img_in);

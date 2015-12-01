@@ -10,7 +10,7 @@ The output was:
 
 Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
 
-The C compiler identification is GNU, found in "/home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/3.2.2/CompilerIdC/a.out"
+The C compiler identification is GNU, found in "/home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/3.2.2/CompilerIdC/a.out"
 
 Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
 Compiler: /usr/bin/c++ 
@@ -23,35 +23,35 @@ The output was:
 
 Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
 
-The CXX compiler identification is GNU, found in "/home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/3.2.2/CompilerIdCXX/a.out"
+The CXX compiler identification is GNU, found in "/home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/3.2.2/CompilerIdCXX/a.out"
 
 Determining if the C compiler works passed with the following output:
-Change Dir: /home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp
+Change Dir: /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTryCompileExec1647022804/fast"
-/usr/bin/make -f CMakeFiles/cmTryCompileExec1647022804.dir/build.make CMakeFiles/cmTryCompileExec1647022804.dir/build
-make[1]: Entering directory `/home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec1647022804.dir/testCCompiler.c.o
-/usr/bin/cc    -o CMakeFiles/cmTryCompileExec1647022804.dir/testCCompiler.c.o   -c /home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp/testCCompiler.c
-Linking C executable cmTryCompileExec1647022804
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1647022804.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTryCompileExec1647022804.dir/testCCompiler.c.o  -o cmTryCompileExec1647022804 -rdynamic 
-make[1]: Leaving directory `/home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTryCompileExec2222192773/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec2222192773.dir/build.make CMakeFiles/cmTryCompileExec2222192773.dir/build
+make[1]: Entering directory `/home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2222192773.dir/testCCompiler.c.o
+/usr/bin/cc    -o CMakeFiles/cmTryCompileExec2222192773.dir/testCCompiler.c.o   -c /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTryCompileExec2222192773
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2222192773.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTryCompileExec2222192773.dir/testCCompiler.c.o  -o cmTryCompileExec2222192773 -rdynamic 
+make[1]: Leaving directory `/home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp'
 
 
 Detecting C compiler ABI info compiled with the following output:
-Change Dir: /home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp
+Change Dir: /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTryCompileExec1069851707/fast"
-/usr/bin/make -f CMakeFiles/cmTryCompileExec1069851707.dir/build.make CMakeFiles/cmTryCompileExec1069851707.dir/build
-make[1]: Entering directory `/home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec1069851707.dir/CMakeCCompilerABI.c.o
-/usr/bin/cc    -o CMakeFiles/cmTryCompileExec1069851707.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.2/Modules/CMakeCCompilerABI.c
-Linking C executable cmTryCompileExec1069851707
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1069851707.dir/link.txt --verbose=1
-/usr/bin/cc      -v CMakeFiles/cmTryCompileExec1069851707.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec1069851707 -rdynamic  
+Run Build Command:"/usr/bin/make" "cmTryCompileExec3762846949/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec3762846949.dir/build.make CMakeFiles/cmTryCompileExec3762846949.dir/build
+make[1]: Entering directory `/home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec3762846949.dir/CMakeCCompilerABI.c.o
+/usr/bin/cc    -o CMakeFiles/cmTryCompileExec3762846949.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.2/Modules/CMakeCCompilerABI.c
+Linking C executable cmTryCompileExec3762846949
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3762846949.dir/link.txt --verbose=1
+/usr/bin/cc      -v CMakeFiles/cmTryCompileExec3762846949.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec3762846949 -rdynamic  
 Using built-in specs.
 COLLECT_GCC=/usr/bin/cc
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/4.8/lto-wrapper
@@ -61,24 +61,24 @@ Thread model: posix
 gcc version 4.8.4 (Ubuntu 4.8.4-2ubuntu1~14.04) 
 COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/
 LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec1069851707' '-rdynamic' '-mtune=generic' '-march=x86-64'
- /usr/lib/gcc/x86_64-linux-gnu/4.8/collect2 --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTryCompileExec1069851707 /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/4.8 -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../.. CMakeFiles/cmTryCompileExec1069851707.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/4.8/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crtn.o
-make[1]: Leaving directory `/home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp'
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec3762846949' '-rdynamic' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/4.8/collect2 --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTryCompileExec3762846949 /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/4.8 -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../.. CMakeFiles/cmTryCompileExec3762846949.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/4.8/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crtn.o
+make[1]: Leaving directory `/home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp'
 
 
 Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTryCompileExec1069851707/fast"]
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTryCompileExec1069851707.dir/build.make CMakeFiles/cmTryCompileExec1069851707.dir/build]
-  ignore line: [make[1]: Entering directory `/home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp']
-  ignore line: [/usr/bin/cmake -E cmake_progress_report /home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp/CMakeFiles 1]
-  ignore line: [Building C object CMakeFiles/cmTryCompileExec1069851707.dir/CMakeCCompilerABI.c.o]
-  ignore line: [/usr/bin/cc    -o CMakeFiles/cmTryCompileExec1069851707.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.2/Modules/CMakeCCompilerABI.c]
-  ignore line: [Linking C executable cmTryCompileExec1069851707]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1069851707.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/cc      -v CMakeFiles/cmTryCompileExec1069851707.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec1069851707 -rdynamic  ]
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTryCompileExec3762846949/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTryCompileExec3762846949.dir/build.make CMakeFiles/cmTryCompileExec3762846949.dir/build]
+  ignore line: [make[1]: Entering directory `/home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp']
+  ignore line: [/usr/bin/cmake -E cmake_progress_report /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp/CMakeFiles 1]
+  ignore line: [Building C object CMakeFiles/cmTryCompileExec3762846949.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/cc    -o CMakeFiles/cmTryCompileExec3762846949.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.2/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTryCompileExec3762846949]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3762846949.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cc      -v CMakeFiles/cmTryCompileExec3762846949.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec3762846949 -rdynamic  ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/cc]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/4.8/lto-wrapper]
@@ -88,8 +88,8 @@ Parsed C implicit link information from above output:
   ignore line: [gcc version 4.8.4 (Ubuntu 4.8.4-2ubuntu1~14.04) ]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec1069851707' '-rdynamic' '-mtune=generic' '-march=x86-64']
-  link line: [ /usr/lib/gcc/x86_64-linux-gnu/4.8/collect2 --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTryCompileExec1069851707 /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/4.8 -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../.. CMakeFiles/cmTryCompileExec1069851707.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/4.8/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec3762846949' '-rdynamic' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/4.8/collect2 --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTryCompileExec3762846949 /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/4.8 -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../.. CMakeFiles/cmTryCompileExec3762846949.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/4.8/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crtn.o]
     arg [/usr/lib/gcc/x86_64-linux-gnu/4.8/collect2] ==> ignore
     arg [--sysroot=/] ==> ignore
     arg [--build-id] ==> ignore
@@ -103,7 +103,7 @@ Parsed C implicit link information from above output:
     arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
     arg [-zrelro] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTryCompileExec1069851707] ==> ignore
+    arg [cmTryCompileExec3762846949] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o] ==> ignore
@@ -115,7 +115,7 @@ Parsed C implicit link information from above output:
     arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
     arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
     arg [-L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/4.8/../../..]
-    arg [CMakeFiles/cmTryCompileExec1069851707.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [CMakeFiles/cmTryCompileExec3762846949.dir/CMakeCCompilerABI.c.o] ==> ignore
     arg [-lgcc] ==> lib [gcc]
     arg [--as-needed] ==> ignore
     arg [-lgcc_s] ==> lib [gcc_s]
@@ -147,18 +147,18 @@ Parsed C implicit link information from above output:
 
 
 Detecting C [-std=c11] compiler features compiled with the following output:
-Change Dir: /home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp
+Change Dir: /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTryCompileExec1400216830/fast"
-/usr/bin/make -f CMakeFiles/cmTryCompileExec1400216830.dir/build.make CMakeFiles/cmTryCompileExec1400216830.dir/build
-make[1]: Entering directory `/home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec1400216830.dir/feature_tests.c.o
-/usr/bin/cc   -std=c11 -o CMakeFiles/cmTryCompileExec1400216830.dir/feature_tests.c.o   -c /home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/feature_tests.c
-Linking C executable cmTryCompileExec1400216830
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1400216830.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTryCompileExec1400216830.dir/feature_tests.c.o  -o cmTryCompileExec1400216830 -rdynamic 
-make[1]: Leaving directory `/home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTryCompileExec412780570/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec412780570.dir/build.make CMakeFiles/cmTryCompileExec412780570.dir/build
+make[1]: Entering directory `/home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec412780570.dir/feature_tests.c.o
+/usr/bin/cc   -std=c11 -o CMakeFiles/cmTryCompileExec412780570.dir/feature_tests.c.o   -c /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/feature_tests.c
+Linking C executable cmTryCompileExec412780570
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec412780570.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTryCompileExec412780570.dir/feature_tests.c.o  -o cmTryCompileExec412780570 -rdynamic 
+make[1]: Leaving directory `/home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp'
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -168,18 +168,18 @@ make[1]: Leaving directory `/home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/C
 
 
 Detecting C [-std=c99] compiler features compiled with the following output:
-Change Dir: /home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp
+Change Dir: /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTryCompileExec537933406/fast"
-/usr/bin/make -f CMakeFiles/cmTryCompileExec537933406.dir/build.make CMakeFiles/cmTryCompileExec537933406.dir/build
-make[1]: Entering directory `/home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec537933406.dir/feature_tests.c.o
-/usr/bin/cc   -std=c99 -o CMakeFiles/cmTryCompileExec537933406.dir/feature_tests.c.o   -c /home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/feature_tests.c
-Linking C executable cmTryCompileExec537933406
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec537933406.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTryCompileExec537933406.dir/feature_tests.c.o  -o cmTryCompileExec537933406 -rdynamic 
-make[1]: Leaving directory `/home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTryCompileExec3158350467/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec3158350467.dir/build.make CMakeFiles/cmTryCompileExec3158350467.dir/build
+make[1]: Entering directory `/home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec3158350467.dir/feature_tests.c.o
+/usr/bin/cc   -std=c99 -o CMakeFiles/cmTryCompileExec3158350467.dir/feature_tests.c.o   -c /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/feature_tests.c
+Linking C executable cmTryCompileExec3158350467
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3158350467.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTryCompileExec3158350467.dir/feature_tests.c.o  -o cmTryCompileExec3158350467 -rdynamic 
+make[1]: Leaving directory `/home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp'
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -189,18 +189,18 @@ make[1]: Leaving directory `/home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/C
 
 
 Detecting C [-std=c90] compiler features compiled with the following output:
-Change Dir: /home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp
+Change Dir: /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTryCompileExec350752564/fast"
-/usr/bin/make -f CMakeFiles/cmTryCompileExec350752564.dir/build.make CMakeFiles/cmTryCompileExec350752564.dir/build
-make[1]: Entering directory `/home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building C object CMakeFiles/cmTryCompileExec350752564.dir/feature_tests.c.o
-/usr/bin/cc   -std=c90 -o CMakeFiles/cmTryCompileExec350752564.dir/feature_tests.c.o   -c /home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/feature_tests.c
-Linking C executable cmTryCompileExec350752564
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec350752564.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTryCompileExec350752564.dir/feature_tests.c.o  -o cmTryCompileExec350752564 -rdynamic 
-make[1]: Leaving directory `/home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTryCompileExec1047967018/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec1047967018.dir/build.make CMakeFiles/cmTryCompileExec1047967018.dir/build
+make[1]: Entering directory `/home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1047967018.dir/feature_tests.c.o
+/usr/bin/cc   -std=c90 -o CMakeFiles/cmTryCompileExec1047967018.dir/feature_tests.c.o   -c /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/feature_tests.c
+Linking C executable cmTryCompileExec1047967018
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1047967018.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTryCompileExec1047967018.dir/feature_tests.c.o  -o cmTryCompileExec1047967018 -rdynamic 
+make[1]: Leaving directory `/home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp'
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -208,32 +208,32 @@ make[1]: Leaving directory `/home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/C
     Feature record: C_FEATURE:0c_static_assert
     Feature record: C_FEATURE:0c_variadic_macros
 Determining if the CXX compiler works passed with the following output:
-Change Dir: /home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp
+Change Dir: /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTryCompileExec3637994821/fast"
-/usr/bin/make -f CMakeFiles/cmTryCompileExec3637994821.dir/build.make CMakeFiles/cmTryCompileExec3637994821.dir/build
-make[1]: Entering directory `/home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building CXX object CMakeFiles/cmTryCompileExec3637994821.dir/testCXXCompiler.cxx.o
-/usr/bin/c++     -o CMakeFiles/cmTryCompileExec3637994821.dir/testCXXCompiler.cxx.o -c /home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
-Linking CXX executable cmTryCompileExec3637994821
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3637994821.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTryCompileExec3637994821.dir/testCXXCompiler.cxx.o  -o cmTryCompileExec3637994821 -rdynamic 
-make[1]: Leaving directory `/home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTryCompileExec3846708767/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec3846708767.dir/build.make CMakeFiles/cmTryCompileExec3846708767.dir/build
+make[1]: Entering directory `/home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec3846708767.dir/testCXXCompiler.cxx.o
+/usr/bin/c++     -o CMakeFiles/cmTryCompileExec3846708767.dir/testCXXCompiler.cxx.o -c /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTryCompileExec3846708767
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3846708767.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTryCompileExec3846708767.dir/testCXXCompiler.cxx.o  -o cmTryCompileExec3846708767 -rdynamic 
+make[1]: Leaving directory `/home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp'
 
 
 Detecting CXX compiler ABI info compiled with the following output:
-Change Dir: /home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp
+Change Dir: /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTryCompileExec1148790394/fast"
-/usr/bin/make -f CMakeFiles/cmTryCompileExec1148790394.dir/build.make CMakeFiles/cmTryCompileExec1148790394.dir/build
-make[1]: Entering directory `/home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building CXX object CMakeFiles/cmTryCompileExec1148790394.dir/CMakeCXXCompilerABI.cpp.o
-/usr/bin/c++     -o CMakeFiles/cmTryCompileExec1148790394.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.2/Modules/CMakeCXXCompilerABI.cpp
-Linking CXX executable cmTryCompileExec1148790394
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1148790394.dir/link.txt --verbose=1
-/usr/bin/c++       -v CMakeFiles/cmTryCompileExec1148790394.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec1148790394 -rdynamic  
+Run Build Command:"/usr/bin/make" "cmTryCompileExec3643975289/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec3643975289.dir/build.make CMakeFiles/cmTryCompileExec3643975289.dir/build
+make[1]: Entering directory `/home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec3643975289.dir/CMakeCXXCompilerABI.cpp.o
+/usr/bin/c++     -o CMakeFiles/cmTryCompileExec3643975289.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.2/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTryCompileExec3643975289
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3643975289.dir/link.txt --verbose=1
+/usr/bin/c++       -v CMakeFiles/cmTryCompileExec3643975289.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec3643975289 -rdynamic  
 Using built-in specs.
 COLLECT_GCC=/usr/bin/c++
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/4.8/lto-wrapper
@@ -243,24 +243,24 @@ Thread model: posix
 gcc version 4.8.4 (Ubuntu 4.8.4-2ubuntu1~14.04) 
 COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/
 LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec1148790394' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
- /usr/lib/gcc/x86_64-linux-gnu/4.8/collect2 --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTryCompileExec1148790394 /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/4.8 -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../.. CMakeFiles/cmTryCompileExec1148790394.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/4.8/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crtn.o
-make[1]: Leaving directory `/home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp'
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec3643975289' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+ /usr/lib/gcc/x86_64-linux-gnu/4.8/collect2 --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTryCompileExec3643975289 /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/4.8 -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../.. CMakeFiles/cmTryCompileExec3643975289.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/4.8/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crtn.o
+make[1]: Leaving directory `/home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp'
 
 
 Parsed CXX implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/make" "cmTryCompileExec1148790394/fast"]
-  ignore line: [/usr/bin/make -f CMakeFiles/cmTryCompileExec1148790394.dir/build.make CMakeFiles/cmTryCompileExec1148790394.dir/build]
-  ignore line: [make[1]: Entering directory `/home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp']
-  ignore line: [/usr/bin/cmake -E cmake_progress_report /home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp/CMakeFiles 1]
-  ignore line: [Building CXX object CMakeFiles/cmTryCompileExec1148790394.dir/CMakeCXXCompilerABI.cpp.o]
-  ignore line: [/usr/bin/c++     -o CMakeFiles/cmTryCompileExec1148790394.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.2/Modules/CMakeCXXCompilerABI.cpp]
-  ignore line: [Linking CXX executable cmTryCompileExec1148790394]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1148790394.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/c++       -v CMakeFiles/cmTryCompileExec1148790394.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec1148790394 -rdynamic  ]
+  ignore line: [Run Build Command:"/usr/bin/make" "cmTryCompileExec3643975289/fast"]
+  ignore line: [/usr/bin/make -f CMakeFiles/cmTryCompileExec3643975289.dir/build.make CMakeFiles/cmTryCompileExec3643975289.dir/build]
+  ignore line: [make[1]: Entering directory `/home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp']
+  ignore line: [/usr/bin/cmake -E cmake_progress_report /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp/CMakeFiles 1]
+  ignore line: [Building CXX object CMakeFiles/cmTryCompileExec3643975289.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/usr/bin/c++     -o CMakeFiles/cmTryCompileExec3643975289.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.2/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTryCompileExec3643975289]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3643975289.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/c++       -v CMakeFiles/cmTryCompileExec3643975289.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec3643975289 -rdynamic  ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/c++]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/4.8/lto-wrapper]
@@ -270,8 +270,8 @@ Parsed CXX implicit link information from above output:
   ignore line: [gcc version 4.8.4 (Ubuntu 4.8.4-2ubuntu1~14.04) ]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/]
   ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.8/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib/:/lib/x86_64-linux-gnu/:/lib/../lib/:/usr/lib/x86_64-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec1148790394' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
-  link line: [ /usr/lib/gcc/x86_64-linux-gnu/4.8/collect2 --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTryCompileExec1148790394 /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/4.8 -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../.. CMakeFiles/cmTryCompileExec1148790394.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/4.8/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec3643975289' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/4.8/collect2 --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o cmTryCompileExec3643975289 /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/4.8 -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../.. CMakeFiles/cmTryCompileExec3643975289.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/4.8/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crtn.o]
     arg [/usr/lib/gcc/x86_64-linux-gnu/4.8/collect2] ==> ignore
     arg [--sysroot=/] ==> ignore
     arg [--build-id] ==> ignore
@@ -285,7 +285,7 @@ Parsed CXX implicit link information from above output:
     arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
     arg [-zrelro] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTryCompileExec1148790394] ==> ignore
+    arg [cmTryCompileExec3643975289] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crt1.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/4.8/../../../x86_64-linux-gnu/crti.o] ==> ignore
     arg [/usr/lib/gcc/x86_64-linux-gnu/4.8/crtbegin.o] ==> ignore
@@ -297,7 +297,7 @@ Parsed CXX implicit link information from above output:
     arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
     arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
     arg [-L/usr/lib/gcc/x86_64-linux-gnu/4.8/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/4.8/../../..]
-    arg [CMakeFiles/cmTryCompileExec1148790394.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [CMakeFiles/cmTryCompileExec3643975289.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
     arg [-lstdc++] ==> lib [stdc++]
     arg [-lm] ==> lib [m]
     arg [-lgcc_s] ==> lib [gcc_s]
@@ -327,18 +327,18 @@ Parsed CXX implicit link information from above output:
 
 
 Detecting CXX [-std=c++1y] compiler features compiled with the following output:
-Change Dir: /home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp
+Change Dir: /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTryCompileExec2714721019/fast"
-/usr/bin/make -f CMakeFiles/cmTryCompileExec2714721019.dir/build.make CMakeFiles/cmTryCompileExec2714721019.dir/build
-make[1]: Entering directory `/home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building CXX object CMakeFiles/cmTryCompileExec2714721019.dir/feature_tests.cxx.o
-/usr/bin/c++    -std=c++1y -o CMakeFiles/cmTryCompileExec2714721019.dir/feature_tests.cxx.o -c /home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTryCompileExec2714721019
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2714721019.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTryCompileExec2714721019.dir/feature_tests.cxx.o  -o cmTryCompileExec2714721019 -rdynamic 
-make[1]: Leaving directory `/home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTryCompileExec2807940749/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec2807940749.dir/build.make CMakeFiles/cmTryCompileExec2807940749.dir/build
+make[1]: Entering directory `/home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec2807940749.dir/feature_tests.cxx.o
+/usr/bin/c++    -std=c++1y -o CMakeFiles/cmTryCompileExec2807940749.dir/feature_tests.cxx.o -c /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTryCompileExec2807940749
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2807940749.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTryCompileExec2807940749.dir/feature_tests.cxx.o  -o cmTryCompileExec2807940749 -rdynamic 
+make[1]: Leaving directory `/home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp'
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
@@ -401,18 +401,18 @@ make[1]: Leaving directory `/home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/C
 
 
 Detecting CXX [-std=c++11] compiler features compiled with the following output:
-Change Dir: /home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp
+Change Dir: /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTryCompileExec1502137140/fast"
-/usr/bin/make -f CMakeFiles/cmTryCompileExec1502137140.dir/build.make CMakeFiles/cmTryCompileExec1502137140.dir/build
-make[1]: Entering directory `/home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building CXX object CMakeFiles/cmTryCompileExec1502137140.dir/feature_tests.cxx.o
-/usr/bin/c++    -std=c++11 -o CMakeFiles/cmTryCompileExec1502137140.dir/feature_tests.cxx.o -c /home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTryCompileExec1502137140
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1502137140.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTryCompileExec1502137140.dir/feature_tests.cxx.o  -o cmTryCompileExec1502137140 -rdynamic 
-make[1]: Leaving directory `/home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTryCompileExec2646317863/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec2646317863.dir/build.make CMakeFiles/cmTryCompileExec2646317863.dir/build
+make[1]: Entering directory `/home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec2646317863.dir/feature_tests.cxx.o
+/usr/bin/c++    -std=c++11 -o CMakeFiles/cmTryCompileExec2646317863.dir/feature_tests.cxx.o -c /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTryCompileExec2646317863
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2646317863.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTryCompileExec2646317863.dir/feature_tests.cxx.o  -o cmTryCompileExec2646317863 -rdynamic 
+make[1]: Leaving directory `/home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp'
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
@@ -475,18 +475,18 @@ make[1]: Leaving directory `/home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/C
 
 
 Detecting CXX [-std=c++98] compiler features compiled with the following output:
-Change Dir: /home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp
+Change Dir: /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTryCompileExec625727735/fast"
-/usr/bin/make -f CMakeFiles/cmTryCompileExec625727735.dir/build.make CMakeFiles/cmTryCompileExec625727735.dir/build
-make[1]: Entering directory `/home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp/CMakeFiles 1
-Building CXX object CMakeFiles/cmTryCompileExec625727735.dir/feature_tests.cxx.o
-/usr/bin/c++    -std=c++98 -o CMakeFiles/cmTryCompileExec625727735.dir/feature_tests.cxx.o -c /home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTryCompileExec625727735
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec625727735.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTryCompileExec625727735.dir/feature_tests.cxx.o  -o cmTryCompileExec625727735 -rdynamic 
-make[1]: Leaving directory `/home/mjenkins/sfuhome/CMPT431/a4/build/CMakeFiles/CMakeTmp'
+Run Build Command:"/usr/bin/make" "cmTryCompileExec1207262163/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec1207262163.dir/build.make CMakeFiles/cmTryCompileExec1207262163.dir/build
+make[1]: Entering directory `/home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec1207262163.dir/feature_tests.cxx.o
+/usr/bin/c++    -std=c++98 -o CMakeFiles/cmTryCompileExec1207262163.dir/feature_tests.cxx.o -c /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTryCompileExec1207262163
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1207262163.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTryCompileExec1207262163.dir/feature_tests.cxx.o  -o cmTryCompileExec1207262163 -rdynamic 
+make[1]: Leaving directory `/home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/CMakeTmp'
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers

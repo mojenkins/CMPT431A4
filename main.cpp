@@ -20,6 +20,9 @@ void run_gpu_gray_test(PGM_IMG img_in);
 int main(){
     PGM_IMG img_ibuf_g;
     PPM_IMG img_ibuf_c;
+
+    //testing that I've set up cuda properly. Should output: "output_num: 9"
+    //cuda_test();
     
     printf("Running contrast enhancement for gray-scale images.\n");
     img_ibuf_g = read_pgm("in.pgm");
@@ -45,9 +48,22 @@ void run_gpu_color_test(PPM_IMG img_in)
 
 void run_gpu_gray_test(PGM_IMG img_in)
 {
+    StopWatchInterface *timer = NULL;
+    PGM_IMG img_obuf;
+
     printf("Starting GPU processing...\n");
     //TODO: run your GPU implementation here
-    img_in = img_in; // To avoid warning...
+    
+    sdkCreateTimer(&timer);
+    sdkStartTimer(&timer);
+    img_obuf = gpu_contrast_enhancement_g(img_in);
+    sdkStopTimer(&timer);
+    printf("Processing time: %f (ms)\n", sdkGetTimerValue(&timer));
+    sdkDeleteTimer(&timer);
+    
+    write_pgm(img_obuf, "out_gpu.pgm");
+    free_pgm(img_obuf);
+
 }
 
 void run_cpu_color_test(PPM_IMG img_in)
