@@ -9,8 +9,6 @@
 // helper for shared that are common to CUDA Samples
 #include <helper_functions.h>
 
-const int imageBitDepth = 8*8; //*** Hard coded. Only 8-bit images supported
-
 
 __global__ void histogram_work(int img_size, int* gpu_lut, unsigned char* gpu_img_in, unsigned char* gpu_img_out){
 	if (blockIdx.x*blockDim.x + threadIdx.x < img_size){

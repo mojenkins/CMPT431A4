@@ -182,8 +182,8 @@ PPM_IMG gpu_contrast_enhancement_c_hsl(PPM_IMG img_in) {
     unsigned char * equalizedL;
     int hist[imageDepth];
     
-    imageHSL = gpu_rgb2hsl(img_in); //*** GPU accelerated RGB to HSL conversion
-    //imageHSL = rgb2hsl(img_in);
+    //imageHSL = gpu_rgb2hsl(img_in); //*** GPU accelerated RGB to HSL conversion
+    imageHSL = rgb2hsl(img_in);
     equalizedL = (unsigned char *)malloc(imageHSL.height*imageHSL.width*sizeof(unsigned char));
     
     histogram(hist, imageHSL.l, imageHSL.height * imageHSL.width, imageDepth);
@@ -258,7 +258,7 @@ HSL_IMG rgb2hsl(PPM_IMG img_in) {
             H += 1;
         if ( H > 1 )
             H -= 1;
-
+        
         img_out.h[i] = H;
         img_out.s[i] = S;
         img_out.l[i] = (unsigned char)(L*255);

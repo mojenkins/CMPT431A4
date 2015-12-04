@@ -9,17 +9,17 @@
 // helper for shared that are common to CUDA Samples
 #include <helper_functions.h>
 
-const int imageBitDepth = 8*8; //*** Hard coded. Only 8-bit images supported
+const int imageDepth = 256; //*** Hard coded. Only 8-bit images supported
 
 __global__ void rgb2hsl_kernel(int img_size, PPM_IMG* gpu_img_in, HSL_IMG* gpu_img_out) {
     int index = blockIdx.x*blockDim.x + threadIdx.x;
     if (index < img_size){
         float H, S, L;
-
+        
         // Convert RGB from [0,255] to [0,1]
-        float var_r = ( (float)gpu_img_in->img_r[index]/(imageBitDepth-1) );
-        float var_g = ( (float)gpu_img_in->img_g[index]/(imageBitDepth-1) );
-        float var_b = ( (float)gpu_img_in->img_b[index]/(imageBitDepth-1) );
+        float var_r = ( (float)gpu_img_in->img_r[index]/(imageDepth-1) );
+        float var_g = ( (float)gpu_img_in->img_g[index]/(imageDepth-1) );
+        float var_b = ( (float)gpu_img_in->img_b[index]/(imageDepth-1) );
         
         // Find min and max values
         float var_min = (var_r < var_g) ? var_r : var_g;
@@ -54,15 +54,14 @@ __global__ void rgb2hsl_kernel(int img_size, PPM_IMG* gpu_img_in, HSL_IMG* gpu_i
         } else {
             H = (2.0/3.0) + del_g - del_r;
         }
+
         
-        // Ensure valid H value
         if (H < 0) {
             H += 1;
-        }
-        if (H > 1) {
+        } else if (H > 1) {
             H -= 1;
         }
-        
+
         // Save HSL values to output image
         gpu_img_out->h[index] = H;
         gpu_img_out->s[index] = S;

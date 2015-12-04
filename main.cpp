@@ -42,7 +42,7 @@ int main() {
 void run_gpu_color_test(PPM_IMG img_in) {
     printf("Starting GPU processing...\n");
     //TODO: run your GPU implementation here
-    
+        
     StopWatchInterface *timer=NULL;
     PPM_IMG img_obuf_hsl, img_obuf_yuv;
     
@@ -56,7 +56,7 @@ void run_gpu_color_test(PPM_IMG img_in) {
     
     write_ppm(img_obuf_hsl, "out_hsl_gpu.ppm");
     
-    // Perform HSL constrast enhancement
+    // Perform YUV constrast enhancement
     sdkCreateTimer(&timer);
     sdkStartTimer(&timer);
     img_obuf_yuv = gpu_contrast_enhancement_c_yuv(img_in);
