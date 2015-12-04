@@ -1,28 +1,26 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-// CUDA Runtime
-#include <cuda_runtime.h>
-// Utility and system includes
-#include <helper_cuda.h>
-// helper for shared that are common to CUDA Samples
-#include <helper_functions.h>
+#include <cuda_runtime.h> // CUDA Runtime
+#include <helper_cuda.h> // Utility and system includes
+#include <helper_functions.h> // helper for shared that are common to CUDA Samples
 #include <helper_timer.h>
+#include "hist-equ.h" // contains cuda function prototypes
 
-#include "hist-equ.h"
-
-void run_cpu_color_test(PPM_IMG img_in);
-void run_gpu_color_test(PPM_IMG img_in);
+// Function prototypes
 void run_cpu_gray_test(PGM_IMG img_in);
 void run_gpu_gray_test(PGM_IMG img_in);
+void run_cpu_color_test(PPM_IMG img_in);
+void run_gpu_color_test(PPM_IMG img_in);
 
 
-int main(){
+
+int main() {
     PGM_IMG img_ibuf_g;
     PPM_IMG img_ibuf_c;
-
-    //testing that I've set up cuda properly. Should output: "output_num: 9"
-    //cuda_test();
+    
+    // Ensure cuda is setup and functioning correctly
+    assert(cuda_test());
     
     printf("Running contrast enhancement for gray-scale images.\n");
     img_ibuf_g = read_pgm("in.pgm");
@@ -30,7 +28,7 @@ int main(){
     run_gpu_gray_test(img_ibuf_g);
     free_pgm(img_ibuf_g);
     
-    printf("Running contrast enhancement for color images.\n");
+    printf("\nRunning contrast enhancement for color images.\n");
     img_ibuf_c = read_ppm("in.ppm");
     run_cpu_color_test(img_ibuf_c);
     run_gpu_color_test(img_ibuf_c);
@@ -39,35 +37,52 @@ int main(){
     return 0;
 }
 
-void run_gpu_color_test(PPM_IMG img_in)
-{
-    printf("Starting GPU processing...\n");
-    //TODO: run your GPU implementation here
-    img_in = img_in; // To avoid warning...
-}
 
-void run_gpu_gray_test(PGM_IMG img_in)
-{
+
+void run_cpu_gray_test(PGM_IMG img_in) {
     StopWatchInterface *timer = NULL;
     PGM_IMG img_obuf;
+    
+    printf("Starting CPU processing...\n");
+    
+    sdkCreateTimer(&timer);
+    sdkStartTimer(&timer);
+    
+    img_obuf = contrast_enhancement_g(img_in);
+    
+    sdkStopTimer(&timer);
+    printf("   Processing time: %f (ms)\n", sdkGetTimerValue(&timer));
+    sdkDeleteTimer(&timer);
+    
+    write_pgm(img_obuf, "out.pgm");
+    free_pgm(img_obuf);
+}
 
+
+
+void run_gpu_gray_test(PGM_IMG img_in) {
+    StopWatchInterface *timer = NULL;
+    PGM_IMG img_obuf;
+    
     printf("Starting GPU processing...\n");
     //TODO: run your GPU implementation here
     
     sdkCreateTimer(&timer);
     sdkStartTimer(&timer);
+    
     img_obuf = gpu_contrast_enhancement_g(img_in);
+    
     sdkStopTimer(&timer);
-    printf("Processing time: %f (ms)\n", sdkGetTimerValue(&timer));
+    printf("   Processing time: %f (ms)\n", sdkGetTimerValue(&timer));
     sdkDeleteTimer(&timer);
     
-    write_pgm(img_obuf, "out_gpu.pgm");
+    write_pgm(img_obuf, "gpu_out.pgm");
     free_pgm(img_obuf);
-
 }
 
-void run_cpu_color_test(PPM_IMG img_in)
-{
+
+
+void run_cpu_color_test(PPM_IMG img_in) {
     StopWatchInterface *timer=NULL;
     PPM_IMG img_obuf_hsl, img_obuf_yuv;
     
@@ -77,16 +92,16 @@ void run_cpu_color_test(PPM_IMG img_in)
     sdkStartTimer(&timer);
     img_obuf_hsl = contrast_enhancement_c_hsl(img_in);
     sdkStopTimer(&timer);
-    printf("HSL processing time: %f (ms)\n", sdkGetTimerValue(&timer));
+    printf("   HSL processing time: %f (ms)\n", sdkGetTimerValue(&timer));
     sdkDeleteTimer(&timer);
     
     write_ppm(img_obuf_hsl, "out_hsl.ppm");
-
+    
     sdkCreateTimer(&timer);
     sdkStartTimer(&timer);
     img_obuf_yuv = contrast_enhancement_c_yuv(img_in);
     sdkStopTimer(&timer);
-    printf("YUV processing time: %f (ms)\n", sdkGetTimerValue(&timer));
+    printf("   YUV processing time: %f (ms)\n", sdkGetTimerValue(&timer));
     sdkDeleteTimer(&timer);
     
     write_ppm(img_obuf_yuv, "out_yuv.ppm");
@@ -97,43 +112,104 @@ void run_cpu_color_test(PPM_IMG img_in)
 
 
 
-
-void run_cpu_gray_test(PGM_IMG img_in)
-{
-    StopWatchInterface *timer = NULL;
-    PGM_IMG img_obuf;
+void run_gpu_color_test(PPM_IMG img_in) {
+    printf("Starting GPU processing...\n");
+    //TODO: run your GPU implementation here
     
+    StopWatchInterface *timer=NULL;
+    PPM_IMG img_obuf_hsl, img_obuf_yuv;
     
-    printf("Starting CPU processing...\n");
-    
+    // Perform HSL constrast enhancement
     sdkCreateTimer(&timer);
     sdkStartTimer(&timer);
-    img_obuf = contrast_enhancement_g(img_in);
+    img_obuf_hsl = gpu_contrast_enhancement_c_hsl(img_in);
     sdkStopTimer(&timer);
-    printf("Processing time: %f (ms)\n", sdkGetTimerValue(&timer));
+    printf("   HSL processing time: %f (ms)\n", sdkGetTimerValue(&timer));
     sdkDeleteTimer(&timer);
     
-    write_pgm(img_obuf, "out.pgm");
-    free_pgm(img_obuf);
+    write_ppm(img_obuf_hsl, "gpu_out_hsl.ppm");
+    
+    // Perform HSL constrast enhancement
+    sdkCreateTimer(&timer);
+    sdkStartTimer(&timer);
+    //img_obuf_yuv = gpu_contrast_enhancement_c_yuv(img_in);
+    sdkStopTimer(&timer);
+    printf("   YUV processing time: %f (ms)\n", sdkGetTimerValue(&timer));
+    sdkDeleteTimer(&timer);
+    
+    write_ppm(img_obuf_yuv, "gpu_out_yuv.ppm");
+    
+    free_ppm(img_obuf_hsl);
+    //free_ppm(img_obuf_yuv);
 }
 
 
 
-PPM_IMG read_ppm(const char * path){
+#pragma mark Grayscale image read/write/free functions
+
+PGM_IMG read_pgm(const char * path) {
     FILE * in_file;
+    char sbuf[256];
+    
+    PGM_IMG result;
+    int v_max;//, i;
+    in_file = fopen(path, "r");
+    if (in_file == NULL) {
+        printf("Input file not found!\n");
+        exit(1);
+    }
+    
+    fscanf(in_file, "%s", sbuf); /*Skip the magic number*/
+    fscanf(in_file, "%d",&result.w);
+    fscanf(in_file, "%d",&result.h);
+    fscanf(in_file, "%d\n",&v_max);
+    printf("Image size: %d x %d\n", result.w, result.h);
+    
+    result.img = (unsigned char *)malloc(result.w * result.h * sizeof(unsigned char) );
+    
+    
+    fread(result.img,sizeof(unsigned char), result.w * result.h, in_file);
+    fclose(in_file);
+    
+    return result;
+}
+
+
+
+void write_pgm(PGM_IMG img, const char * path) {
+    FILE * out_file;
+    out_file = fopen(path, "wb");
+    fprintf(out_file, "P5\n");
+    fprintf(out_file, "%d %d\n255\n",img.w, img.h);
+    fwrite(img.img,sizeof(unsigned char), img.w*img.h, out_file);
+    fclose(out_file);
+}
+
+
+
+void free_pgm(PGM_IMG img) {
+    free(img.img);
+}
+
+
+
+#pragma mark Color image read/write/free functions
+
+PPM_IMG read_ppm(const char * path) {
+    FILE *in_file;
     char sbuf[256];
     
     char *ibuf;
     PPM_IMG result;
-    int v_max, i;
+    int v_max;
     in_file = fopen(path, "r");
-    if (in_file == NULL){
+    if (in_file == NULL) {
         printf("Input file not found!\n");
         exit(1);
     }
+    
     /*Skip the magic number*/
     fscanf(in_file, "%s", sbuf);
-
 
     //result = malloc(sizeof(PPM_IMG));
     fscanf(in_file, "%d",&result.w);
@@ -141,16 +217,17 @@ PPM_IMG read_ppm(const char * path){
     fscanf(in_file, "%d\n",&v_max);
     printf("Image size: %d x %d\n", result.w, result.h);
     
-
+    // Allocate memory for image
     result.img_r = (unsigned char *)malloc(result.w * result.h * sizeof(unsigned char));
     result.img_g = (unsigned char *)malloc(result.w * result.h * sizeof(unsigned char));
     result.img_b = (unsigned char *)malloc(result.w * result.h * sizeof(unsigned char));
-    ibuf         = (char *)malloc(3 * result.w * result.h * sizeof(char));
-
+    ibuf         =          (char *)malloc(3 * result.w * result.h * sizeof(char));
     
+    // Read image file into input bufer
     fread(ibuf,sizeof(unsigned char), 3 * result.w*result.h, in_file);
-
-    for(i = 0; i < result.w*result.h; i ++){
+    
+    // Separate RGB channels in input buffer and store in result.img_X
+    for(int i = 0; i < result.w*result.h; i ++) {
         result.img_r[i] = ibuf[3*i + 0];
         result.img_g[i] = ibuf[3*i + 1];
         result.img_b[i] = ibuf[3*i + 2];
@@ -162,72 +239,32 @@ PPM_IMG read_ppm(const char * path){
     return result;
 }
 
-void write_ppm(PPM_IMG img, const char * path){
-    FILE * out_file;
-    int i;
-    
-    char * obuf = (char *)malloc(3 * img.w * img.h * sizeof(char));
 
-    for(i = 0; i < img.w*img.h; i ++){
-        obuf[3*i + 0] = img.img_r[i];
-        obuf[3*i + 1] = img.img_g[i];
-        obuf[3*i + 2] = img.img_b[i];
+
+void write_ppm(PPM_IMG inputImage, const char * destinationPath) {
+    FILE *outputFile;
+
+    char *outputBuffer = (char *)malloc(3 * inputImage.w * inputImage.h * sizeof(char));
+    
+    // Copy input
+    for(int i = 0; i < inputImage.w*inputImage.h; i ++){
+        outputBuffer[3*i + 0] = inputImage.img_r[i];
+        outputBuffer[3*i + 1] = inputImage.img_g[i];
+        outputBuffer[3*i + 2] = inputImage.img_b[i];
     }
-    out_file = fopen(path, "wb");
-    fprintf(out_file, "P6\n");
-    fprintf(out_file, "%d %d\n255\n",img.w, img.h);
-    fwrite(obuf,sizeof(unsigned char), 3*img.w*img.h, out_file);
-    fclose(out_file);
-    free(obuf);
+    
+    outputFile = fopen(destinationPath, "wb");
+    fprintf(outputFile, "P6\n");
+    fprintf(outputFile, "%d %d\n255\n",inputImage.w, inputImage.h);
+    fwrite(outputBuffer, sizeof(unsigned char), 3*inputImage.w*inputImage.h, outputFile);
+    fclose(outputFile);
+    free(outputBuffer);
 }
 
-void free_ppm(PPM_IMG img)
-{
+
+
+void free_ppm(PPM_IMG img) {
     free(img.img_r);
     free(img.img_g);
     free(img.img_b);
 }
-
-PGM_IMG read_pgm(const char * path){
-    FILE * in_file;
-    char sbuf[256];
-    
-    
-    PGM_IMG result;
-    int v_max;//, i;
-    in_file = fopen(path, "r");
-    if (in_file == NULL){
-        printf("Input file not found!\n");
-        exit(1);
-    }
-    
-    fscanf(in_file, "%s", sbuf); /*Skip the magic number*/
-    fscanf(in_file, "%d",&result.w);
-    fscanf(in_file, "%d",&result.h);
-    fscanf(in_file, "%d\n",&v_max);
-    printf("Image size: %d x %d\n", result.w, result.h);
-    
-
-    result.img = (unsigned char *)malloc(result.w * result.h * sizeof(unsigned char));
-
-        
-    fread(result.img,sizeof(unsigned char), result.w*result.h, in_file);    
-    fclose(in_file);
-    
-    return result;
-}
-
-void write_pgm(PGM_IMG img, const char * path){
-    FILE * out_file;
-    out_file = fopen(path, "wb");
-    fprintf(out_file, "P5\n");
-    fprintf(out_file, "%d %d\n255\n",img.w, img.h);
-    fwrite(img.img,sizeof(unsigned char), img.w*img.h, out_file);
-    fclose(out_file);
-}
-
-void free_pgm(PGM_IMG img)
-{
-    free(img.img);
-}
-
