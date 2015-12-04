@@ -54,7 +54,7 @@ void run_gpu_color_test(PPM_IMG img_in) {
     printf("   HSL processing time: %f (ms)\n", sdkGetTimerValue(&timer));
     sdkDeleteTimer(&timer);
     
-    write_ppm(img_obuf_hsl, "gpu_out_hsl.ppm");
+    write_ppm(img_obuf_hsl, "out_hsl_gpu.ppm");
     
     // Perform HSL constrast enhancement
     sdkCreateTimer(&timer);
@@ -64,7 +64,7 @@ void run_gpu_color_test(PPM_IMG img_in) {
     printf("   YUV processing time: %f (ms)\n", sdkGetTimerValue(&timer));
     sdkDeleteTimer(&timer);
     
-    write_ppm(img_obuf_yuv, "gpu_out_yuv.ppm");
+    write_ppm(img_obuf_yuv, "out_yuv_gpu.ppm");
     
     free_ppm(img_obuf_hsl);
     //free_ppm(img_obuf_yuv);
@@ -88,28 +88,7 @@ void run_gpu_gray_test(PGM_IMG img_in) {
     printf("   Processing time: %f (ms)\n", sdkGetTimerValue(&timer));
     sdkDeleteTimer(&timer);
     
-    write_pgm(img_obuf, "gpu_out.pgm");
-    free_pgm(img_obuf);
-}
-
-
-
-void run_cpu_gray_test(PGM_IMG img_in) {
-    StopWatchInterface *timer = NULL;
-    PGM_IMG img_obuf;
-    
-    printf("Starting CPU processing...\n");
-    
-    sdkCreateTimer(&timer);
-    sdkStartTimer(&timer);
-    
-    img_obuf = contrast_enhancement_g(img_in);
-    
-    sdkStopTimer(&timer);
-    printf("   Processing time: %f (ms)\n", sdkGetTimerValue(&timer));
-    sdkDeleteTimer(&timer);
-    
-    write_pgm(img_obuf, "out.pgm");
+    write_pgm(img_obuf, "out_bw_gpu.pgm");
     free_pgm(img_obuf);
 }
 
@@ -141,6 +120,27 @@ void run_cpu_color_test(PPM_IMG img_in) {
     
     free_ppm(img_obuf_hsl);
     free_ppm(img_obuf_yuv);
+}
+
+
+
+void run_cpu_gray_test(PGM_IMG img_in) {
+    StopWatchInterface *timer = NULL;
+    PGM_IMG img_obuf;
+    
+    printf("Starting CPU processing...\n");
+    
+    sdkCreateTimer(&timer);
+    sdkStartTimer(&timer);
+    
+    img_obuf = contrast_enhancement_g(img_in);
+    
+    sdkStopTimer(&timer);
+    printf("   Processing time: %f (ms)\n", sdkGetTimerValue(&timer));
+    sdkDeleteTimer(&timer);
+    
+    write_pgm(img_obuf, "out_bw.pgm");
+    free_pgm(img_obuf);
 }
 
 
