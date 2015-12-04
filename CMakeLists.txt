@@ -27,6 +27,7 @@ set(CUDASRCS
    # 2.cu
    test.cu
    histogram-equalization.cu
+   yuv.cu
 )
 
 CUDA_ADD_EXECUTABLE(${PROJECT_NAME} ${CUDASRCS} ${CPPSRCS})

@@ -500,9 +500,234 @@ CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_histogram-equ
 	cd /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/5kk70-assignment-gpu.dir && /usr/bin/cmake -E make_directory /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/5kk70-assignment-gpu.dir//.
 	cd /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/5kk70-assignment-gpu.dir && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/5kk70-assignment-gpu.dir//./5kk70-assignment-gpu_generated_histogram-equalization.cu.o -D generated_cubin_file:STRING=/home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/5kk70-assignment-gpu.dir//./5kk70-assignment-gpu_generated_histogram-equalization.cu.o.cubin.txt -P /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/5kk70-assignment-gpu.dir//5kk70-assignment-gpu_generated_histogram-equalization.cu.o.cmake
 
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: ../hist-equ.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: ../yuv.cu
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/_G_config.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/alloca.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/assert.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/algorithm
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/backward/binders.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/algorithmfwd.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/allocator.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/atomic_lockfree_defines.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/basic_ios.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/basic_ios.tcc
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/basic_string.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/basic_string.tcc
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/char_traits.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/codecvt.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/concept_check.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/cpp_type_traits.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/cxxabi_forced.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/exception_defines.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/fstream.tcc
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/functexcept.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/ios_base.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/istream.tcc
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/locale_classes.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/locale_classes.tcc
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/locale_facets.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/locale_facets.tcc
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/localefwd.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/memoryfwd.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/move.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/ostream.tcc
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/ostream_insert.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/postypes.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/range_access.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/sstream.tcc
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/stl_algo.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/stl_algobase.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/stl_bvector.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/stl_construct.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/stl_function.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/stl_heap.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/stl_iterator.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/stl_iterator_base_funcs.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/stl_iterator_base_types.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/stl_pair.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/stl_relops.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/stl_tempbuf.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/stl_uninitialized.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/stl_vector.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/streambuf.tcc
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/streambuf_iterator.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/stringfwd.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/bits/vector.tcc
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/cctype
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/clocale
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/cmath
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/cstdio
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/cstdlib
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/ctime
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/cwchar
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/cwctype
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/debug/debug.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/exception
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/ext/alloc_traits.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/ext/atomicity.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/ext/new_allocator.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/ext/numeric_traits.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/ext/type_traits.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/fstream
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/ios
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/iosfwd
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/iostream
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/istream
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/new
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/ostream
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/sstream
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/stdexcept
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/streambuf
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/string
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/utility
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/c++/4.8/vector
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/ctype.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/endian.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/features.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/libio.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/limits.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/linux/limits.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/locale.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/math.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/pthread.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/sched.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/stdc-predef.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/stdio.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/stdlib.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/string.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/strings.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/time.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/wchar.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/wctype.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/bits/byteswap-16.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/bits/byteswap.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/bits/endian.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/bits/huge_val.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/bits/huge_valf.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/bits/huge_vall.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/bits/inf.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/bits/local_lim.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/bits/locale.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/bits/mathcalls.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/bits/mathdef.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/bits/mathinline.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/bits/nan.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/bits/posix1_lim.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/bits/posix2_lim.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/bits/sched.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/bits/select.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/bits/select2.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/bits/setjmp.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/bits/sigset.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/bits/stdio.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/bits/stdio2.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/bits/stdio_lim.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/bits/stdlib-float.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/bits/stdlib.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/bits/string3.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/bits/sys_errlist.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/bits/time.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/bits/timex.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/bits/types.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/bits/typesizes.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/bits/waitflags.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/bits/waitstatus.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/bits/wchar.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/bits/wchar2.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/bits/wordsize.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/bits/xopen_lim.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/c++/4.8/bits/atomic_word.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/c++/4.8/bits/basic_file.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/c++/4.8/bits/c++allocator.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/c++/4.8/bits/c++config.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/c++/4.8/bits/c++io.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/c++/4.8/bits/c++locale.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/c++/4.8/bits/cpu_defines.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/c++/4.8/bits/ctype_base.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/c++/4.8/bits/ctype_inline.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/c++/4.8/bits/gthr-default.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/c++/4.8/bits/gthr.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/c++/4.8/bits/os_defines.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/gnu/stubs-64.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/gnu/stubs.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/sys/cdefs.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/sys/select.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/sys/sysmacros.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/sys/time.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/x86_64-linux-gnu/sys/types.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/include/xlocale.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed/limits.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed/syslimits.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/lib/gcc/x86_64-linux-gnu/4.8/include/stdarg.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/lib/gcc/x86_64-linux-gnu/4.8/include/stddef.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/builtin_types.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/channel_descriptor.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/common_functions.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/cuda_device_runtime_api.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/cuda_runtime.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/cuda_runtime_api.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/cuda_surface_types.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/cuda_texture_types.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/device_atomic_functions.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/device_atomic_functions.hpp
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/device_double_functions.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/device_double_functions.hpp
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/device_functions.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/device_functions.hpp
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/device_launch_parameters.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/device_types.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/driver_functions.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/driver_types.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/host_config.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/host_defines.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/math_functions.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/math_functions.hpp
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/math_functions_dbl_ptx3.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/math_functions_dbl_ptx3.hpp
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/sm_20_atomic_functions.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/sm_20_atomic_functions.hpp
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/sm_20_intrinsics.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/sm_20_intrinsics.hpp
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/sm_30_intrinsics.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/sm_30_intrinsics.hpp
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/sm_32_atomic_functions.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/sm_32_atomic_functions.hpp
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/sm_32_intrinsics.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/sm_32_intrinsics.hpp
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/sm_35_atomic_functions.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/sm_35_intrinsics.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/surface_functions.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/surface_functions.hpp
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/surface_indirect_functions.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/surface_indirect_functions.hpp
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/surface_types.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/texture_fetch_functions.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/texture_fetch_functions.hpp
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/texture_indirect_functions.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/texture_indirect_functions.hpp
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/texture_types.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/vector_functions.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/vector_functions.hpp
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/include/vector_types.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/samples/common/inc/exception.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/samples/common/inc/helper_cuda.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/samples/common/inc/helper_functions.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/samples/common/inc/helper_image.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/samples/common/inc/helper_string.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: /usr/local/cuda/samples/common/inc/helper_timer.h
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o.cmake
+CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o: ../yuv.cu
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building NVCC (Device) object CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o"
+	cd /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/5kk70-assignment-gpu.dir && /usr/bin/cmake -E make_directory /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/5kk70-assignment-gpu.dir//.
+	cd /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/5kk70-assignment-gpu.dir && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/5kk70-assignment-gpu.dir//./5kk70-assignment-gpu_generated_yuv.cu.o -D generated_cubin_file:STRING=/home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/5kk70-assignment-gpu.dir//./5kk70-assignment-gpu_generated_yuv.cu.o.cubin.txt -P /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/5kk70-assignment-gpu.dir//5kk70-assignment-gpu_generated_yuv.cu.o.cmake
+
 CMakeFiles/5kk70-assignment-gpu.dir/main.cpp.o: CMakeFiles/5kk70-assignment-gpu.dir/flags.make
 CMakeFiles/5kk70-assignment-gpu.dir/main.cpp.o: ../main.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/5kk70-assignment-gpu.dir/main.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/5kk70-assignment-gpu.dir/main.cpp.o -c /home/mjenkins/sfuhome/CMPT431A4/a4/main.cpp
 
@@ -525,7 +750,7 @@ CMakeFiles/5kk70-assignment-gpu.dir/main.cpp.o.provides.build: CMakeFiles/5kk70-
 
 CMakeFiles/5kk70-assignment-gpu.dir/histogram-equalization.cpp.o: CMakeFiles/5kk70-assignment-gpu.dir/flags.make
 CMakeFiles/5kk70-assignment-gpu.dir/histogram-equalization.cpp.o: ../histogram-equalization.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/5kk70-assignment-gpu.dir/histogram-equalization.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/5kk70-assignment-gpu.dir/histogram-equalization.cpp.o -c /home/mjenkins/sfuhome/CMPT431A4/a4/histogram-equalization.cpp
 
@@ -548,7 +773,7 @@ CMakeFiles/5kk70-assignment-gpu.dir/histogram-equalization.cpp.o.provides.build:
 
 CMakeFiles/5kk70-assignment-gpu.dir/contrast-enhancement.cpp.o: CMakeFiles/5kk70-assignment-gpu.dir/flags.make
 CMakeFiles/5kk70-assignment-gpu.dir/contrast-enhancement.cpp.o: ../contrast-enhancement.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles $(CMAKE_PROGRESS_5)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/5kk70-assignment-gpu.dir/contrast-enhancement.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/5kk70-assignment-gpu.dir/contrast-enhancement.cpp.o -c /home/mjenkins/sfuhome/CMPT431A4/a4/contrast-enhancement.cpp
 
@@ -578,13 +803,15 @@ CMakeFiles/5kk70-assignment-gpu.dir/contrast-enhancement.cpp.o.provides.build: C
 # External object files for target 5kk70-assignment-gpu
 5kk70__assignment__gpu_EXTERNAL_OBJECTS = \
 "/home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_test.cu.o" \
-"/home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_histogram-equalization.cu.o"
+"/home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_histogram-equalization.cu.o" \
+"/home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o"
 
 5kk70-assignment-gpu: CMakeFiles/5kk70-assignment-gpu.dir/main.cpp.o
 5kk70-assignment-gpu: CMakeFiles/5kk70-assignment-gpu.dir/histogram-equalization.cpp.o
 5kk70-assignment-gpu: CMakeFiles/5kk70-assignment-gpu.dir/contrast-enhancement.cpp.o
 5kk70-assignment-gpu: CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_test.cu.o
 5kk70-assignment-gpu: CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_histogram-equalization.cu.o
+5kk70-assignment-gpu: CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o
 5kk70-assignment-gpu: CMakeFiles/5kk70-assignment-gpu.dir/build.make
 5kk70-assignment-gpu: /usr/local/cuda/lib64/libcudart.so
 5kk70-assignment-gpu: CMakeFiles/5kk70-assignment-gpu.dir/link.txt
@@ -606,6 +833,7 @@ CMakeFiles/5kk70-assignment-gpu.dir/clean:
 
 CMakeFiles/5kk70-assignment-gpu.dir/depend: CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_test.cu.o
 CMakeFiles/5kk70-assignment-gpu.dir/depend: CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_histogram-equalization.cu.o
+CMakeFiles/5kk70-assignment-gpu.dir/depend: CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o
 	cd /home/mjenkins/sfuhome/CMPT431A4/a4/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/mjenkins/sfuhome/CMPT431A4/a4 /home/mjenkins/sfuhome/CMPT431A4/a4 /home/mjenkins/sfuhome/CMPT431A4/a4/build /home/mjenkins/sfuhome/CMPT431A4/a4/build /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/5kk70-assignment-gpu.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/5kk70-assignment-gpu.dir/depend
 

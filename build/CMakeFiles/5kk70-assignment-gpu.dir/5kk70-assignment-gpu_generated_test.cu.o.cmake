@@ -70,7 +70,7 @@ set(generated_file_internal "/home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFile
 set(generated_cubin_file_internal "/home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles/5kk70-assignment-gpu.dir//./5kk70-assignment-gpu_generated_test.cu.o.cubin.txt") # path
 
 set(CUDA_NVCC_EXECUTABLE "/usr/local/cuda/bin/nvcc") # path
-set(CUDA_NVCC_FLAGS -O3;-gencode;arch=compute_35,code=sm_35 ;; ) # list
+set(CUDA_NVCC_FLAGS -O3 ;; ) # list
 # Build specific configuration flags
 set(CUDA_NVCC_FLAGS_DEBUG  ; )
 set(CUDA_NVCC_FLAGS_MINSIZEREL  ; )
