@@ -7,7 +7,7 @@ find_package(CUDA REQUIRED)
 set(CMAKE_CXX_FLAG "-g -Wall")
 
 # Adjust according to your platform
-set(CUDA_NVCC_FLAGS ${CUDA_NVCC_FLAGS};-O3 -gencode arch=compute_35,code=sm_35)
+set(CUDA_NVCC_FLAGS ${CUDA_NVCC_FLAGS};-O3)
 
 # The second option is to make use of utility functions defined in samples/common/inc
 include_directories(${CUDA_INCLUDE_DIRS} "${CUDA_TOOLKIT_ROOT_DIR}/samples/common/inc")
@@ -27,6 +27,7 @@ set(CUDASRCS
    # 2.cu
    test.cu
    histogram-equalization.cu
+   yuv.cu
 )
 
 CUDA_ADD_EXECUTABLE(${PROJECT_NAME} ${CUDASRCS} ${CPPSRCS})

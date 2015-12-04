@@ -78,6 +78,31 @@ PPM_IMG contrast_enhancement_c_yuv(PPM_IMG img_in)
     return result;
 }
 
+PPM_IMG gpu_contrast_enhancement_c_yuv(PPM_IMG img_in)
+{
+    YUV_IMG yuv_med;
+    PPM_IMG result;
+    
+    unsigned char * y_equ;
+    int hist[256];
+    
+    yuv_med = gpu_rgb2yuv(img_in);
+    y_equ = (unsigned char *)malloc(yuv_med.h*yuv_med.w*sizeof(unsigned char));
+    
+    histogram(hist, yuv_med.img_y, yuv_med.h * yuv_med.w, 256);
+    gpu_histogram_equalization(y_equ,yuv_med.img_y,hist,yuv_med.h * yuv_med.w, 256);
+
+    free(yuv_med.img_y);
+    yuv_med.img_y = y_equ;
+    
+    result = gpu_yuv2rgb(yuv_med);
+    free(yuv_med.img_y);
+    free(yuv_med.img_u);
+    free(yuv_med.img_v);
+    
+    return result;
+}
+
 PPM_IMG contrast_enhancement_c_hsl(PPM_IMG img_in)
 {
     HSL_IMG hsl_med;
