@@ -59,7 +59,7 @@ void run_gpu_color_test(PPM_IMG img_in) {
     // Perform HSL constrast enhancement
     sdkCreateTimer(&timer);
     sdkStartTimer(&timer);
-    //img_obuf_yuv = gpu_contrast_enhancement_c_yuv(img_in);
+    img_obuf_yuv = gpu_contrast_enhancement_c_yuv(img_in);
     sdkStopTimer(&timer);
     printf("   YUV processing time: %f (ms)\n", sdkGetTimerValue(&timer));
     sdkDeleteTimer(&timer);
@@ -67,7 +67,7 @@ void run_gpu_color_test(PPM_IMG img_in) {
     write_ppm(img_obuf_yuv, "out_yuv_gpu.ppm");
     
     free_ppm(img_obuf_hsl);
-    //free_ppm(img_obuf_yuv);
+    free_ppm(img_obuf_yuv);
 }
 
 
