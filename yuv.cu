@@ -13,14 +13,14 @@ __global__ void rgb2yuv_work(int img_size, unsigned char* gpu_img_in_r, unsigned
 				 unsigned char* gpu_img_out_y, unsigned char* gpu_img_out_u, unsigned char* gpu_img_out_v){
 	unsigned char r, g, b;
 
-	if (blockIdx.x+threadIdx.x < img_size){
-		r = gpu_img_in_r[blockIdx.x + threadIdx.x];
-		g = gpu_img_in_g[blockIdx.x + threadIdx.x];
-		b = gpu_img_in_b[blockIdx.x + threadIdx.x];
+	if (blockIdx.x*blockDim.x + threadIdx.x < img_size){
+		r = gpu_img_in_r[blockIdx.x*blockDim.x + threadIdx.x];
+		g = gpu_img_in_g[blockIdx.x*blockDim.x + threadIdx.x];
+		b = gpu_img_in_b[blockIdx.x*blockDim.x + threadIdx.x];
 
-	    gpu_img_out_y[blockIdx.x + threadIdx.x] = 0.299*r + 0.587*g +  0.114*b;
-	    gpu_img_out_u[blockIdx.x + threadIdx.x] = -0.169*r - 0.331*g +  0.499*b + 128;
-	    gpu_img_out_v[blockIdx.x + threadIdx.x] = 0.499*r - 0.418*g - 0.0813*b + 128;
+	    gpu_img_out_y[blockIdx.x*blockDim.x + threadIdx.x] = 0.299*r + 0.587*g +  0.114*b;
+	    gpu_img_out_u[blockIdx.x*blockDim.x + threadIdx.x] = -0.169*r - 0.331*g +  0.499*b + 128;
+	    gpu_img_out_v[blockIdx.x*blockDim.x + threadIdx.x] = 0.499*r - 0.418*g - 0.0813*b + 128;
 	}
 }
 
@@ -92,19 +92,19 @@ __global__ void yuv2rgb_work(int img_size, unsigned char* gpu_img_in_y, unsigned
 	int rt,gt,bt;
 	int rt2, gt2, bt2;
 
-	if (blockIdx.x+threadIdx.x < img_size){
+	if (blockIdx.x*blockDim.x + threadIdx.x < img_size){
 
-	    rt  = gpu_img_in_y[blockIdx.x + threadIdx.x] + 1.402*(gpu_img_in_v[blockIdx.x + threadIdx.x]-128);
-	    gt  = gpu_img_in_y[blockIdx.x + threadIdx.x] - 0.344*(gpu_img_in_u[blockIdx.x + threadIdx.x]-128) - 0.714*(gpu_img_in_v[blockIdx.x + threadIdx.x]-128);
-	    bt  = gpu_img_in_y[blockIdx.x + threadIdx.x] + 1.772*(gpu_img_in_u[blockIdx.x + threadIdx.x]-128);
+	    rt  = gpu_img_in_y[blockIdx.x*blockDim.x + threadIdx.x] + 1.402*(gpu_img_in_v[blockIdx.x*blockDim.x + threadIdx.x]-128);
+	    gt  = gpu_img_in_y[blockIdx.x*blockDim.x + threadIdx.x] - 0.344*(gpu_img_in_u[blockIdx.x*blockDim.x + threadIdx.x]-128) - 0.714*(gpu_img_in_v[blockIdx.x*blockDim.x + threadIdx.x]-128);
+	    bt  = gpu_img_in_y[blockIdx.x*blockDim.x + threadIdx.x] + 1.772*(gpu_img_in_u[blockIdx.x*blockDim.x + threadIdx.x]-128);
 
 	    rt2 = (rt > 255) ? 255 : rt;
 	    gt2 = (gt > 255) ? 255 : gt;
 	    bt2 = (bt > 255) ? 255 : bt;
 
-	    gpu_img_out_r[blockIdx.x + threadIdx.x] = (rt2 < 0) ? 0 : rt2;
-	    gpu_img_out_b[blockIdx.x + threadIdx.x] = (bt2 < 0) ? 0 : bt2;
-	    gpu_img_out_g[blockIdx.x + threadIdx.x] = (gt2 < 0) ? 0 : gt2;
+	    gpu_img_out_r[blockIdx.x*blockDim.x + threadIdx.x] = (rt2 < 0) ? 0 : rt2;
+	    gpu_img_out_b[blockIdx.x*blockDim.x + threadIdx.x] = (bt2 < 0) ? 0 : bt2;
+	    gpu_img_out_g[blockIdx.x*blockDim.x + threadIdx.x] = (gt2 < 0) ? 0 : gt2;
 	}
 }
 

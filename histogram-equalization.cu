@@ -11,8 +11,8 @@
 
 
 __global__ void histogram_work(int img_size, int* gpu_lut, unsigned char* gpu_img_in, unsigned char* gpu_img_out){
-	if (blockIdx.x + threadIdx.x < img_size){
-    	gpu_img_out[blockIdx.x + threadIdx.x] = (gpu_lut[gpu_img_in[blockIdx.x + threadIdx.x]] > 255) ? 255 : gpu_lut[gpu_img_in[blockIdx.x + threadIdx.x]];
+	if (blockIdx.x*blockDim.x + threadIdx.x < img_size){
+    	gpu_img_out[blockIdx.x*blockDim.x + threadIdx.x] = (gpu_lut[gpu_img_in[blockIdx.x*blockDim.x + threadIdx.x]] > 255) ? 255 : gpu_lut[gpu_img_in[blockIdx.x*blockDim.x + threadIdx.x]];
 	}
 }
 
