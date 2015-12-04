@@ -39,23 +39,35 @@ int main() {
 
 
 
-void run_cpu_gray_test(PGM_IMG img_in) {
-    StopWatchInterface *timer = NULL;
-    PGM_IMG img_obuf;
+void run_gpu_color_test(PPM_IMG img_in) {
+    printf("Starting GPU processing...\n");
+    //TODO: run your GPU implementation here
     
-    printf("Starting CPU processing...\n");
+    StopWatchInterface *timer=NULL;
+    PPM_IMG img_obuf_hsl, img_obuf_yuv;
     
+    // Perform HSL constrast enhancement
     sdkCreateTimer(&timer);
     sdkStartTimer(&timer);
-    
-    img_obuf = contrast_enhancement_g(img_in);
-    
+    img_obuf_hsl = gpu_contrast_enhancement_c_hsl(img_in);
     sdkStopTimer(&timer);
-    printf("   Processing time: %f (ms)\n", sdkGetTimerValue(&timer));
+    printf("   HSL processing time: %f (ms)\n", sdkGetTimerValue(&timer));
     sdkDeleteTimer(&timer);
     
-    write_pgm(img_obuf, "out.pgm");
-    free_pgm(img_obuf);
+    write_ppm(img_obuf_hsl, "gpu_out_hsl.ppm");
+    
+    // Perform HSL constrast enhancement
+    sdkCreateTimer(&timer);
+    sdkStartTimer(&timer);
+    //img_obuf_yuv = gpu_contrast_enhancement_c_yuv(img_in);
+    sdkStopTimer(&timer);
+    printf("   YUV processing time: %f (ms)\n", sdkGetTimerValue(&timer));
+    sdkDeleteTimer(&timer);
+    
+    write_ppm(img_obuf_yuv, "gpu_out_yuv.ppm");
+    
+    free_ppm(img_obuf_hsl);
+    //free_ppm(img_obuf_yuv);
 }
 
 
@@ -77,6 +89,27 @@ void run_gpu_gray_test(PGM_IMG img_in) {
     sdkDeleteTimer(&timer);
     
     write_pgm(img_obuf, "gpu_out.pgm");
+    free_pgm(img_obuf);
+}
+
+
+
+void run_cpu_gray_test(PGM_IMG img_in) {
+    StopWatchInterface *timer = NULL;
+    PGM_IMG img_obuf;
+    
+    printf("Starting CPU processing...\n");
+    
+    sdkCreateTimer(&timer);
+    sdkStartTimer(&timer);
+    
+    img_obuf = contrast_enhancement_g(img_in);
+    
+    sdkStopTimer(&timer);
+    printf("   Processing time: %f (ms)\n", sdkGetTimerValue(&timer));
+    sdkDeleteTimer(&timer);
+    
+    write_pgm(img_obuf, "out.pgm");
     free_pgm(img_obuf);
 }
 
@@ -108,39 +141,6 @@ void run_cpu_color_test(PPM_IMG img_in) {
     
     free_ppm(img_obuf_hsl);
     free_ppm(img_obuf_yuv);
-}
-
-
-
-void run_gpu_color_test(PPM_IMG img_in) {
-    printf("Starting GPU processing...\n");
-    //TODO: run your GPU implementation here
-    
-    StopWatchInterface *timer=NULL;
-    PPM_IMG img_obuf_hsl, img_obuf_yuv;
-    
-    // Perform HSL constrast enhancement
-    sdkCreateTimer(&timer);
-    sdkStartTimer(&timer);
-    img_obuf_hsl = gpu_contrast_enhancement_c_hsl(img_in);
-    sdkStopTimer(&timer);
-    printf("   HSL processing time: %f (ms)\n", sdkGetTimerValue(&timer));
-    sdkDeleteTimer(&timer);
-    
-    write_ppm(img_obuf_hsl, "gpu_out_hsl.ppm");
-    
-    // Perform HSL constrast enhancement
-    sdkCreateTimer(&timer);
-    sdkStartTimer(&timer);
-    //img_obuf_yuv = gpu_contrast_enhancement_c_yuv(img_in);
-    sdkStopTimer(&timer);
-    printf("   YUV processing time: %f (ms)\n", sdkGetTimerValue(&timer));
-    sdkDeleteTimer(&timer);
-    
-    write_ppm(img_obuf_yuv, "gpu_out_yuv.ppm");
-    
-    free_ppm(img_obuf_hsl);
-    //free_ppm(img_obuf_yuv);
 }
 
 
