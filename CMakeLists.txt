@@ -23,11 +23,10 @@ set(CPPSRCS
 )
 
 set(CUDASRCS
-   # 1.cu
-   # 2.cu
    test.cu
    histogram-equalization.cu
    yuv.cu
+   hsl.cu
 )
 
 CUDA_ADD_EXECUTABLE(${PROJECT_NAME} ${CUDASRCS} ${CPPSRCS})

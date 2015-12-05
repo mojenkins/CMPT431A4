@@ -3,38 +3,85 @@
 #include <stdlib.h>
 #include "hist-equ.h"
 
-PGM_IMG contrast_enhancement_g(PGM_IMG img_in)
-{
+const int imageDepth = 256; //*** Hard coded. Only 8-bit images supported
+
+void printHistogram(int histogramSize, int *hist) {
+    // Shrink histogram to 64 wide
+    int histogram64[64] = {0};
+    for (int i = 0; i < histogramSize; i++) {
+        histogram64[i/64] += hist[i];
+    }
+    
+    // Find max value of histogram64
+    int maxCount = 0;
+    for (int i = 0; i < 64; i++) {
+        if (histogram64[i] > maxCount) {
+            maxCount = histogram64[i];
+        }
+    }
+    
+    // Scale to 0-10
+    for (int i = 0; i < 64; i++) {
+        histogram64[i] = 10*(float)histogram64[i]/maxCount;
+    }
+    
+    // Print histogram
+    for (int i = 10; i > 0; i--) { // for every row in the histogram
+        for (int j = 0; j < 64; j++) { // for every column in the row
+            if (histogram64[j] < i) {
+                printf(" ");
+            } else {
+                printf("*");
+            }
+        }
+        printf("\n");
+    }
+    printf("----------------------------------------------------------------\n");
+}
+
+PGM_IMG contrast_enhancement_g(PGM_IMG img_in) {
     PGM_IMG result;
-    int hist[256];
+    int hist[imageDepth];
     
     result.w = img_in.w;
     result.h = img_in.h;
     result.img = (unsigned char *)malloc(result.w * result.h * sizeof(unsigned char));
     
-    histogram(hist, img_in.img, img_in.h * img_in.w, 256);
-    histogram_equalization(result.img,img_in.img,hist,result.w*result.h, 256);
+    // Calculate histogram from image
+    histogram(hist, img_in.img, img_in.h * img_in.w, imageDepth);
+    
+    //printHistogram(imageDepth, hist);
+    
+    // Perform histogram equalization
+    histogram_equalization(result.img, img_in.img, hist, result.w*result.h, imageDepth);
+        
     return result;
 }
 
-PGM_IMG gpu_contrast_enhancement_g(PGM_IMG img_in)
-{
+
+
+PGM_IMG gpu_contrast_enhancement_g(PGM_IMG img_in) {
     PGM_IMG result;
-    int hist[256];
+    int hist[imageDepth];
     
     result.w = img_in.w;
     result.h = img_in.h;
     result.img = (unsigned char *)malloc(result.w * result.h * sizeof(unsigned char));
     
-    gpu_histogram(hist, img_in.img, img_in.h * img_in.w, 256);
-    gpu_histogram_equalization(result.img,img_in.img,hist,result.w*result.h, 256);
+    // Calculate histogram from image
+    gpu_histogram(hist, img_in.img, img_in.h * img_in.w, imageDepth);
+    
+    // Perform histogram equalization
+    gpu_histogram_equalization(result.img, img_in.img, hist, result.w*result.h, imageDepth);
+    
     return result;
 }
 
-PPM_IMG contrast_enhancement_c_rgb(PPM_IMG img_in)
-{
+
+
+PPM_IMG contrast_enhancement_c_rgb(PPM_IMG img_in) {
     PPM_IMG result;
-    int hist[256];
+    int hist[imageDepth];
     
     result.w = img_in.w;
     result.h = img_in.h;
@@ -42,30 +89,30 @@ PPM_IMG contrast_enhancement_c_rgb(PPM_IMG img_in)
     result.img_g = (unsigned char *)malloc(result.w * result.h * sizeof(unsigned char));
     result.img_b = (unsigned char *)malloc(result.w * result.h * sizeof(unsigned char));
     
-    histogram(hist, img_in.img_r, img_in.h * img_in.w, 256);
-    histogram_equalization(result.img_r,img_in.img_r,hist,result.w*result.h, 256);
-    histogram(hist, img_in.img_g, img_in.h * img_in.w, 256);
-    histogram_equalization(result.img_g,img_in.img_g,hist,result.w*result.h, 256);
-    histogram(hist, img_in.img_b, img_in.h * img_in.w, 256);
-    histogram_equalization(result.img_b,img_in.img_b,hist,result.w*result.h, 256);
+    histogram(hist, img_in.img_r, img_in.h * img_in.w, imageDepth);
+    histogram_equalization(result.img_r,img_in.img_r,hist,result.w*result.h, imageDepth);
+    histogram(hist, img_in.img_g, img_in.h * img_in.w, imageDepth);
+    histogram_equalization(result.img_g,img_in.img_g,hist,result.w*result.h, imageDepth);
+    histogram(hist, img_in.img_b, img_in.h * img_in.w, imageDepth);
+    histogram_equalization(result.img_b,img_in.img_b,hist,result.w*result.h, imageDepth);
 
     return result;
 }
 
 
-PPM_IMG contrast_enhancement_c_yuv(PPM_IMG img_in)
-{
+
+PPM_IMG contrast_enhancement_c_yuv(PPM_IMG img_in) {
     YUV_IMG yuv_med;
     PPM_IMG result;
     
     unsigned char * y_equ;
-    int hist[256];
+    int hist[imageDepth];
     
     yuv_med = rgb2yuv(img_in);
     y_equ = (unsigned char *)malloc(yuv_med.h*yuv_med.w*sizeof(unsigned char));
     
-    histogram(hist, yuv_med.img_y, yuv_med.h * yuv_med.w, 256);
-    histogram_equalization(y_equ,yuv_med.img_y,hist,yuv_med.h * yuv_med.w, 256);
+    histogram(hist, yuv_med.img_y, yuv_med.h * yuv_med.w, imageDepth);
+    histogram_equalization(y_equ,yuv_med.img_y,hist,yuv_med.h * yuv_med.w, imageDepth);
 
     free(yuv_med.img_y);
     yuv_med.img_y = y_equ;
@@ -103,19 +150,18 @@ PPM_IMG gpu_contrast_enhancement_c_yuv(PPM_IMG img_in)
     return result;
 }
 
-PPM_IMG contrast_enhancement_c_hsl(PPM_IMG img_in)
-{
+PPM_IMG contrast_enhancement_c_hsl(PPM_IMG img_in) {
     HSL_IMG hsl_med;
     PPM_IMG result;
     
     unsigned char * l_equ;
-    int hist[256];
+    int hist[imageDepth];
 
     hsl_med = rgb2hsl(img_in);
     l_equ = (unsigned char *)malloc(hsl_med.height*hsl_med.width*sizeof(unsigned char));
 
-    histogram(hist, hsl_med.l, hsl_med.height * hsl_med.width, 256);
-    histogram_equalization(l_equ, hsl_med.l,hist,hsl_med.width*hsl_med.height, 256);
+    histogram(hist, hsl_med.l, hsl_med.height * hsl_med.width, imageDepth);
+    histogram_equalization(l_equ, hsl_med.l,hist,hsl_med.width*hsl_med.height, imageDepth);
     
     free(hsl_med.l);
     hsl_med.l = l_equ;
@@ -128,10 +174,36 @@ PPM_IMG contrast_enhancement_c_hsl(PPM_IMG img_in)
 }
 
 
+
+PPM_IMG gpu_contrast_enhancement_c_hsl(PPM_IMG img_in) {
+    HSL_IMG imageHSL;
+    PPM_IMG result;
+    
+    unsigned char * equalizedL;
+    int hist[imageDepth];
+    
+    //imageHSL = gpu_rgb2hsl(img_in); //*** GPU accelerated RGB to HSL conversion
+    imageHSL = rgb2hsl(img_in);
+    equalizedL = (unsigned char *)malloc(imageHSL.height*imageHSL.width*sizeof(unsigned char));
+    
+    gpu_histogram(hist, imageHSL.l, imageHSL.height * imageHSL.width, imageDepth);
+    gpu_histogram_equalization(equalizedL, imageHSL.l, hist,imageHSL.width * imageHSL.height, imageDepth);
+    
+    free(imageHSL.l);
+    imageHSL.l = equalizedL;
+    
+    result = hsl2rgb(imageHSL);
+    free(imageHSL.h);
+    free(imageHSL.s);
+    free(imageHSL.l);
+    return result;
+}
+
+
+
 //Convert RGB to HSL, assume R,G,B in [0, 255]
 //Output H, S in [0.0, 1.0] and L in [0, 255]
-HSL_IMG rgb2hsl(PPM_IMG img_in)
-{
+HSL_IMG rgb2hsl(PPM_IMG img_in) {
     int i;
     float H, S, L;
     HSL_IMG img_out;// = (HSL_IMG *)malloc(sizeof(HSL_IMG));
@@ -143,9 +215,9 @@ HSL_IMG rgb2hsl(PPM_IMG img_in)
     
     for(i = 0; i < img_in.w*img_in.h; i ++){
         
-        float var_r = ( (float)img_in.img_r[i]/255 );//Convert RGB to [0,1]
-        float var_g = ( (float)img_in.img_g[i]/255 );
-        float var_b = ( (float)img_in.img_b[i]/255 );
+        float var_r = ( (float)img_in.img_r[i]/(imageDepth-1) );//Convert RGB to [0,1]
+        float var_g = ( (float)img_in.img_g[i]/(imageDepth-1) );
+        float var_b = ( (float)img_in.img_b[i]/(imageDepth-1) );
         float var_min = (var_r < var_g) ? var_r : var_g;
         var_min = (var_min < var_b) ? var_min : var_b;   //min. value of RGB
         float var_max = (var_r > var_g) ? var_r : var_g;
@@ -186,7 +258,7 @@ HSL_IMG rgb2hsl(PPM_IMG img_in)
             H += 1;
         if ( H > 1 )
             H -= 1;
-
+        
         img_out.h[i] = H;
         img_out.s[i] = S;
         img_out.l[i] = (unsigned char)(L*255);
@@ -195,8 +267,10 @@ HSL_IMG rgb2hsl(PPM_IMG img_in)
     return img_out;
 }
 
-float Hue_2_RGB( float v1, float v2, float vH )             //Function Hue_2_RGB
-{
+
+
+//Function Hue_2_RGB
+float Hue_2_RGB( float v1, float v2, float vH ) {
     if ( vH < 0 ) vH += 1;
     if ( vH > 1 ) vH -= 1;
     if ( ( 6 * vH ) < 1 ) return ( v1 + ( v2 - v1 ) * 6 * vH );
@@ -207,8 +281,7 @@ float Hue_2_RGB( float v1, float v2, float vH )             //Function Hue_2_RGB
 
 //Convert HSL to RGB, assume H, S in [0.0, 1.0] and L in [0, 255]
 //Output R,G,B in [0, 255]
-PPM_IMG hsl2rgb(HSL_IMG img_in)
-{
+PPM_IMG hsl2rgb(HSL_IMG img_in) {
     int i;
     PPM_IMG result;
     
@@ -253,6 +326,8 @@ PPM_IMG hsl2rgb(HSL_IMG img_in)
     return result;
 }
 
+
+
 //Convert RGB to YUV, all components in [0, 255]
 YUV_IMG rgb2yuv(PPM_IMG img_in)
 {
@@ -284,8 +359,9 @@ YUV_IMG rgb2yuv(PPM_IMG img_in)
     return img_out;
 }
 
-unsigned char clip_rgb(int x)
-{
+
+
+unsigned char clip_rgb(int x) {
     if(x > 255)
         return 255;
     if(x < 0)
@@ -295,8 +371,7 @@ unsigned char clip_rgb(int x)
 }
 
 //Convert YUV to RGB, all components in [0, 255]
-PPM_IMG yuv2rgb(YUV_IMG img_in)
-{
+PPM_IMG yuv2rgb(YUV_IMG img_in) {
     PPM_IMG img_out;
     int i;
     int  rt,gt,bt;
