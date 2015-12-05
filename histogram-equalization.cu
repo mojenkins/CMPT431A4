@@ -94,8 +94,9 @@ void gpu_histogram_equalization(unsigned char * img_out,
     cudaMemcpy( gpu_lut, lut, (nbr_bin) * sizeof(int), cudaMemcpyHostToDevice );
     free(lut);
     
-    histogram_equilization_work<<<img_size/512+1,512>>>(img_size, gpu_lut, gpu_img_in, gpu_img_out);
-
+    // call kernel
+    histogram_work<<<img_size/512+1,512>>>(img_size, gpu_lut, gpu_img_in, gpu_img_out);
+    
     // copy back (using cudaMemcpy) gpu_img_out to img_out
     cudaMemcpy( img_out, gpu_img_out, img_size * sizeof(unsigned char), cudaMemcpyDeviceToHost );
     
