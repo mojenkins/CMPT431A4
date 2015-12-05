@@ -116,6 +116,7 @@ PPM_IMG contrast_enhancement_c_yuv(PPM_IMG img_in) {
 
     free(yuv_med.img_y);
     yuv_med.img_y = y_equ;
+    free(y_equ);
     
     result = yuv2rgb(yuv_med);
     free(yuv_med.img_y);
@@ -141,6 +142,7 @@ PPM_IMG gpu_contrast_enhancement_c_yuv(PPM_IMG img_in)
 
     free(yuv_med.img_y);
     yuv_med.img_y = y_equ;
+    free(y_equ);
     
     result = gpu_yuv2rgb(yuv_med);
     free(yuv_med.img_y);
@@ -165,6 +167,7 @@ PPM_IMG contrast_enhancement_c_hsl(PPM_IMG img_in) {
     
     free(hsl_med.l);
     hsl_med.l = l_equ;
+    free(l_equ);
 
     result = hsl2rgb(hsl_med);
     free(hsl_med.h);
@@ -191,6 +194,7 @@ PPM_IMG gpu_contrast_enhancement_c_hsl(PPM_IMG img_in) {
     
     free(imageHSL.l);
     imageHSL.l = equalizedL;
+    free(equalizedL);
     
     result = hsl2rgb(imageHSL);
     free(imageHSL.h);

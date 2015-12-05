@@ -59,6 +59,7 @@ void gpu_histogram_equalization(unsigned char * img_out,
     // Copy img_in and cdf to gpu
     cudaMemcpy( gpu_img_in, img_in, img_size * sizeof(unsigned char), cudaMemcpyHostToDevice );
     cudaMemcpy( gpu_lut, lut, (nbr_bin) * sizeof(int), cudaMemcpyHostToDevice );
+    free(lut);
     
     // call kernel
     histogram_work<<<img_size/512+1,512>>>(img_size, gpu_lut, gpu_img_in, gpu_img_out);

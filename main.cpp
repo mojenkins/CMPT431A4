@@ -93,9 +93,8 @@ void run_gpu_color_test(PPM_IMG img_in) {
     }
     
     
-    
+    //free_ppm(img_obuf_yuv);
     free_ppm(img_obuf_hsl);
-    free_ppm(img_obuf_yuv);
 }
 
 
@@ -164,8 +163,8 @@ void run_cpu_color_test(PPM_IMG img_in) {
     
     write_ppm(img_obuf_yuv, "out_yuv.ppm");
     
+    //free_ppm(img_obuf_yuv);
     free_ppm(img_obuf_hsl);
-    free_ppm(img_obuf_yuv);
 }
 
 
