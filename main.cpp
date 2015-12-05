@@ -19,7 +19,7 @@ int main() {
     PGM_IMG img_ibuf_g;
     PPM_IMG img_ibuf_c;
     
-    // Ensure cuda is setup and functioning correctly
+    // Ensure cuda is setup and functioning correctly. Also does first cudaMalloc, taking care of extra cost of first cudaMalloc
     assert(cuda_test());
     
     printf("Running contrast enhancement for gray-scale images.\n");

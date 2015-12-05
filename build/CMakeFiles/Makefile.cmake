@@ -12,6 +12,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.2.2/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.2.2/CMakeSystem.cmake"
   "CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_histogram-equalization.cu.o.depend"
+  "CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_hsl.cu.o.depend"
   "CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_test.cu.o.depend"
   "CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o.depend"
   "/usr/share/cmake-3.2/Modules/CMakeCInformation.cmake"
@@ -46,6 +47,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_test.cu.o.cmake"
   "CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_histogram-equalization.cu.o.cmake"
   "CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_yuv.cu.o.cmake"
+  "CMakeFiles/5kk70-assignment-gpu.dir/5kk70-assignment-gpu_generated_hsl.cu.o.cmake"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 

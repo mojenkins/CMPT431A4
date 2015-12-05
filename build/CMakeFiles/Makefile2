@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/mjenkins/sfuhome/CMPT431A4/a4/build
 CMakeFiles/5kk70-assignment-gpu.dir/all:
 	$(MAKE) -f CMakeFiles/5kk70-assignment-gpu.dir/build.make CMakeFiles/5kk70-assignment-gpu.dir/depend
 	$(MAKE) -f CMakeFiles/5kk70-assignment-gpu.dir/build.make CMakeFiles/5kk70-assignment-gpu.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles  1 2 3 4 5 6
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles  1 2 3 4 5 6 7
 	@echo "Built target 5kk70-assignment-gpu"
 .PHONY : CMakeFiles/5kk70-assignment-gpu.dir/all
 
@@ -69,7 +69,7 @@ all: CMakeFiles/5kk70-assignment-gpu.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/5kk70-assignment-gpu.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles 7
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/5kk70-assignment-gpu.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/mjenkins/sfuhome/CMPT431A4/a4/build/CMakeFiles 0
 .PHONY : CMakeFiles/5kk70-assignment-gpu.dir/rule

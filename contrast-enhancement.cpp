@@ -69,7 +69,7 @@ PGM_IMG gpu_contrast_enhancement_g(PGM_IMG img_in) {
     result.img = (unsigned char *)malloc(result.w * result.h * sizeof(unsigned char));
     
     // Calculate histogram from image
-    histogram(hist, img_in.img, img_in.h * img_in.w, imageDepth);
+    gpu_histogram(hist, img_in.img, img_in.h * img_in.w, imageDepth);
     
     // Perform histogram equalization
     gpu_histogram_equalization(result.img, img_in.img, hist, result.w*result.h, imageDepth);
@@ -137,7 +137,7 @@ PPM_IMG gpu_contrast_enhancement_c_yuv(PPM_IMG img_in)
     yuv_med = gpu_rgb2yuv(img_in);
     y_equ = (unsigned char *)malloc(yuv_med.h*yuv_med.w*sizeof(unsigned char));
     
-    histogram(hist, yuv_med.img_y, yuv_med.h * yuv_med.w, 256);
+    gpu_histogram(hist, yuv_med.img_y, yuv_med.h * yuv_med.w, 256);
     gpu_histogram_equalization(y_equ,yuv_med.img_y,hist,yuv_med.h * yuv_med.w, 256);
 
     free(yuv_med.img_y);
@@ -189,7 +189,7 @@ PPM_IMG gpu_contrast_enhancement_c_hsl(PPM_IMG img_in) {
     imageHSL = rgb2hsl(img_in);
     equalizedL = (unsigned char *)malloc(imageHSL.height*imageHSL.width*sizeof(unsigned char));
     
-    histogram(hist, imageHSL.l, imageHSL.height * imageHSL.width, imageDepth);
+    gpu_histogram(hist, imageHSL.l, imageHSL.height * imageHSL.width, imageDepth);
     gpu_histogram_equalization(equalizedL, imageHSL.l, hist,imageHSL.width * imageHSL.height, imageDepth);
     
     free(imageHSL.l);
