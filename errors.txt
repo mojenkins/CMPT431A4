@@ -1,0 +1,95 @@
+1)
+mjenkins@sassi-desktop:~/CMPT431A4/build$ ./5kk70-assignment-gpu 
+Running contrast enhancement for gray-scale images.
+Image size: 3648 x 2736
+Starting CPU processing...
+   Processing time: 58.907001 (ms)
+Starting GPU processing...
+   Processing time (GPU events): 11.458752 (ms)
+
+Running contrast enhancement for color images.
+Image size: 3648 x 2736
+Starting CPU processing...
+   HSL processing time: 788.676025 (ms)
+   YUV processing time: 442.865997 (ms)
+Starting GPU processing...
+   HSL processing time (GPU events): 737.399536 (ms)
+*** Error in `./5kk70-assignment-gpu': double free or corruption (out): 0x0000000004b4eda0 ***
+Aborted (core dumped)
+
+2) (next run)
+mjenkins@sassi-desktop:~/CMPT431A4/build$ ./5kk70-assignment-gpu 
+Running contrast enhancement for gray-scale images.
+Image size: 3648 x 2736
+Starting CPU processing...
+   Processing time: 58.664001 (ms)
+Starting GPU processing...
+   Processing time (GPU events): 11.479616 (ms)
+
+Running contrast enhancement for color images.
+Image size: 3648 x 2736
+Starting CPU processing...
+   HSL processing time: 788.205017 (ms)
+   YUV processing time: 442.674988 (ms)
+Starting GPU processing...
+   HSL processing time (GPU events): 737.559998 (ms)
+*** Error in `./5kk70-assignment-gpu': munmap_chunk(): invalid pointer: 0x0000000005781ed0 ***
+Aborted (core dumped)
+
+3) (same as 2 with different pointer address)
+mjenkins@sassi-desktop:~/CMPT431A4/build$ ./5kk70-assignment-gpu 
+Running contrast enhancement for gray-scale images.
+Image size: 3648 x 2736
+Starting CPU processing...
+   Processing time: 58.676998 (ms)
+Starting GPU processing...
+   Processing time (GPU events): 11.494336 (ms)
+
+Running contrast enhancement for color images.
+Image size: 3648 x 2736
+Starting CPU processing...
+   HSL processing time: 788.627991 (ms)
+   YUV processing time: 443.157990 (ms)
+Starting GPU processing...
+   HSL processing time (GPU events): 737.111511 (ms)
+*** Error in `./5kk70-assignment-gpu': munmap_chunk(): invalid pointer: 0x000000000540cdd0 ***
+Aborted (core dumped)
+
+4)
+mjenkins@sassi-desktop:~/CMPT431A4/build$ ./5kk70-assignment-gpu 
+Running contrast enhancement for gray-scale images.
+Image size: 3648 x 2736
+Starting CPU processing...
+   Processing time: 58.682999 (ms)
+Starting GPU processing...
+   Processing time (GPU events): 11.581728 (ms)
+
+Running contrast enhancement for color images.
+Image size: 3648 x 2736
+Starting CPU processing...
+   HSL processing time: 789.508972 (ms)
+   YUV processing time: 445.002014 (ms)
+Starting GPU processing...
+   HSL processing time (GPU events): 738.851074 (ms)
+Segmentation fault (core dumped)
+
+5)
+mjenkins@sassi-desktop:~/CMPT431A4/build$ ./5kk70-assignment-gpu 
+Running contrast enhancement for gray-scale images.
+Image size: 3648 x 2736
+Starting CPU processing...
+   Processing time: 58.709000 (ms)
+Starting GPU processing...
+   Processing time (GPU events): 10.731616 (ms)
+
+Running contrast enhancement for color images.
+Image size: 3648 x 2736
+Starting CPU processing...
+   HSL processing time: 789.018005 (ms)
+   YUV processing time: 443.333008 (ms)
+Starting GPU processing...
+   HSL processing time (CPU timer): 737.815979 (ms)
+*** Error in `./5kk70-assignment-gpu': free(): invalid size: 0x0000000004695d40 ***
+Aborted (core dumped)
+
+
