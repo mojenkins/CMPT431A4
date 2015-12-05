@@ -42,29 +42,57 @@ int main() {
 void run_gpu_color_test(PPM_IMG img_in) {
     printf("Starting GPU processing...\n");
     //TODO: run your GPU implementation here
-        
-    StopWatchInterface *timer=NULL;
     PPM_IMG img_obuf_hsl, img_obuf_yuv;
+    bool CPU_timer = false;
     
-    // Perform HSL constrast enhancement
-    sdkCreateTimer(&timer);
-    sdkStartTimer(&timer);
-    img_obuf_hsl = gpu_contrast_enhancement_c_hsl(img_in);
-    sdkStopTimer(&timer);
-    printf("   HSL processing time: %f (ms)\n", sdkGetTimerValue(&timer));
-    sdkDeleteTimer(&timer);
+    if (CPU_timer) {
+        StopWatchInterface *timer=NULL;
+        
+        // Perform HSL constrast enhancement
+        sdkCreateTimer(&timer);
+        sdkStartTimer(&timer);
+        img_obuf_hsl = gpu_contrast_enhancement_c_hsl(img_in);
+        sdkStopTimer(&timer);
+        printf("   HSL processing time (CPU timer): %f (ms)\n", sdkGetTimerValue(&timer));
+        sdkDeleteTimer(&timer);
+        write_ppm(img_obuf_hsl, "out_hsl_gpu.ppm");
+        
+        // Perform YUV constrast enhancement
+        sdkCreateTimer(&timer);
+        sdkStartTimer(&timer);
+        img_obuf_yuv = gpu_contrast_enhancement_c_yuv(img_in);
+        sdkStopTimer(&timer);
+        printf("   YUV processing time (CPU timer): %f (ms)\n", sdkGetTimerValue(&timer));
+        sdkDeleteTimer(&timer);
+        write_ppm(img_obuf_yuv, "out_yuv_gpu.ppm");
+    } else {
+        cudaEvent_t startHSL, stopHSL, startYUV, stopYUV;
+        float hslExecutionMS, yuvExecutionMS;
+        cudaEventCreate(&startHSL);
+        cudaEventCreate(&stopHSL);
+        cudaEventCreate(&startYUV);
+        cudaEventCreate(&stopYUV);
+        
+        // Perform HSL constrast enhancement
+        cudaEventRecord(startHSL);
+        img_obuf_hsl = gpu_contrast_enhancement_c_hsl(img_in);
+        cudaEventRecord(stopHSL);
+        cudaEventSynchronize(stopHSL);
+        cudaEventElapsedTime(&hslExecutionMS, startHSL, stopHSL);
+        printf("   HSL processing time (GPU events): %f (ms)\n", hslExecutionMS);
+        write_ppm(img_obuf_hsl, "out_hsl_gpu.ppm");
+        
+        // Perform YUV constrast enhancement
+        cudaEventRecord(startYUV);
+        img_obuf_yuv = gpu_contrast_enhancement_c_yuv(img_in);
+        cudaEventRecord(stopYUV);
+        cudaEventSynchronize(stopYUV);
+        cudaEventElapsedTime(&yuvExecutionMS, startYUV, stopYUV);
+        printf("   YUV processing time (GPU events): %f (ms)\n", yuvExecutionMS);
+        write_ppm(img_obuf_yuv, "out_yuv_gpu.ppm");
+    }
     
-    write_ppm(img_obuf_hsl, "out_hsl_gpu.ppm");
     
-    // Perform YUV constrast enhancement
-    sdkCreateTimer(&timer);
-    sdkStartTimer(&timer);
-    img_obuf_yuv = gpu_contrast_enhancement_c_yuv(img_in);
-    sdkStopTimer(&timer);
-    printf("   YUV processing time: %f (ms)\n", sdkGetTimerValue(&timer));
-    sdkDeleteTimer(&timer);
-    
-    write_ppm(img_obuf_yuv, "out_yuv_gpu.ppm");
     
     free_ppm(img_obuf_hsl);
     free_ppm(img_obuf_yuv);
@@ -74,19 +102,37 @@ void run_gpu_color_test(PPM_IMG img_in) {
 
 void run_gpu_gray_test(PGM_IMG img_in) {
     StopWatchInterface *timer = NULL;
+    cudaEvent_t startEvent, stopEvent;
+    float executionMS;
     PGM_IMG img_obuf;
+    bool CPU_timer = false;
     
     printf("Starting GPU processing...\n");
     //TODO: run your GPU implementation here
     
-    sdkCreateTimer(&timer);
-    sdkStartTimer(&timer);
-    
-    img_obuf = gpu_contrast_enhancement_g(img_in);
-    
-    sdkStopTimer(&timer);
-    printf("   Processing time: %f (ms)\n", sdkGetTimerValue(&timer));
-    sdkDeleteTimer(&timer);
+    if (CPU_timer) {
+        sdkCreateTimer(&timer);
+        sdkStartTimer(&timer);
+        
+        img_obuf = gpu_contrast_enhancement_g(img_in);
+        
+        sdkStopTimer(&timer);
+        printf("   Processing time (CPU timer): %f (ms)\n", sdkGetTimerValue(&timer));
+        sdkDeleteTimer(&timer);
+    } else {
+        cudaEventCreate(&startEvent);
+        cudaEventCreate(&stopEvent);
+        
+        cudaEventRecord(startEvent);
+        
+        img_obuf = gpu_contrast_enhancement_g(img_in);
+        
+        cudaEventRecord(stopEvent);
+        cudaEventSynchronize(stopEvent);
+        cudaEventElapsedTime(&executionMS, startEvent, stopEvent);
+        
+        printf("   Processing time (GPU events): %f (ms)\n", executionMS);
+    }
     
     write_pgm(img_obuf, "out_bw_gpu.pgm");
     free_pgm(img_obuf);
