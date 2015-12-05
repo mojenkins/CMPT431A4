@@ -23,6 +23,12 @@ int main(){
 
     //testing that I've set up cuda properly. Should output: "output_num: 9"
     //cuda_test();
+
+    unsigned char * malloc_var;
+    //run an initial cudaMalloc to ignore the extra cost of the first malloc
+    cudaMalloc( (void**)&malloc_var, sizeof(unsigned char) );
+    cudaFree(malloc_var);
+
     
     printf("Running contrast enhancement for gray-scale images.\n");
     img_ibuf_g = read_pgm("in.pgm");

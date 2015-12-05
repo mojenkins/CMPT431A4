@@ -26,7 +26,7 @@ PGM_IMG gpu_contrast_enhancement_g(PGM_IMG img_in)
     result.h = img_in.h;
     result.img = (unsigned char *)malloc(result.w * result.h * sizeof(unsigned char));
     
-    histogram(hist, img_in.img, img_in.h * img_in.w, 256);
+    gpu_histogram(hist, img_in.img, img_in.h * img_in.w, 256);
     gpu_histogram_equalization(result.img,img_in.img,hist,result.w*result.h, 256);
     return result;
 }
@@ -89,7 +89,7 @@ PPM_IMG gpu_contrast_enhancement_c_yuv(PPM_IMG img_in)
     yuv_med = gpu_rgb2yuv(img_in);
     y_equ = (unsigned char *)malloc(yuv_med.h*yuv_med.w*sizeof(unsigned char));
     
-    histogram(hist, yuv_med.img_y, yuv_med.h * yuv_med.w, 256);
+    gpu_histogram(hist, yuv_med.img_y, yuv_med.h * yuv_med.w, 256);
     gpu_histogram_equalization(y_equ,yuv_med.img_y,hist,yuv_med.h * yuv_med.w, 256);
 
     free(yuv_med.img_y);
