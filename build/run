@@ -2,7 +2,7 @@
 # script to run all input file sizes for assignment 3
 
 values=""
-for i in 128 256 512 1024 1920 3000; do
+for i in 32 128 256 512 1024 1920 3000; do
 	output=$( ./5kk70-assignment-gpu input/$i.pgm input/$i.ppm )
 
 	values="$values
