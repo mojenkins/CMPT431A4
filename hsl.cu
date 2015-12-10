@@ -120,10 +120,10 @@ HSL_IMG gpu_rgb2hsl(PPM_IMG img_in) {
 __global__ void hsl2rgb_kernel(int img_size, float *gpu_img_in_h, float *gpu_img_in_s, unsigned char *gpu_img_in_l, unsigned char *gpu_img_out_r, unsigned char *gpu_img_out_g, unsigned char *gpu_img_out_b) {
     int index = blockIdx.x*blockDim.x + threadIdx.x;
     if (index < img_size){
-				float H = img_in.h[index];
-        float S = img_in.s[index];
-        float L = img_in.l[index]/255.0f;
-        float var_1, var_2;
+				float H = gpu_img_in_h[index];
+        float S = gpu_img_in_s[index];
+        float L = gpu_img_in_l[index]/255.0f;
+        float var1, var2;
         
         unsigned char r,g,b;
         
@@ -137,7 +137,7 @@ __global__ void hsl2rgb_kernel(int img_size, float *gpu_img_in_h, float *gpu_img
         else
         {
 						var2 = (L < 0.5) ? (L * (1 + S)) : ((L + S) - (S * L));
-						var1 = 2 * L - var2
+						var1 = 2 * L - var2;
 						
 						//calculate r
 						float rvH = H + (1.0f/3.0f);
@@ -169,14 +169,13 @@ __global__ void hsl2rgb_kernel(int img_size, float *gpu_img_in_h, float *gpu_img
 
         gpu_img_out_r[index] = r;
         gpu_img_out_g[index] = g;
-        gpu_img_out_b[index = b;
+        gpu_img_out_b[index] = b;
 		}
 }
 
 //Convert HSL to RGB, assume H, S in [0.0, 1.0] and L in [0, 255]
 //Output R,G,B in [0, 255]
 PPM_IMG gpu_hsl2rgb(HSL_IMG img_in) {
-    int i;
     PPM_IMG result;
     
 		int img_size = img_in.width * img_in.height;
