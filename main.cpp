@@ -54,7 +54,7 @@ void run_gpu_color_test(PPM_IMG img_in) {
     printf("Starting GPU processing...\n");
     //TODO: run your GPU implementation here
     PPM_IMG img_obuf_hsl, img_obuf_yuv;
-    bool CPU_timer = false;
+    bool CPU_timer = true;
     
     if (CPU_timer) {
         StopWatchInterface *timer=NULL;
@@ -115,7 +115,7 @@ void run_gpu_gray_test(PGM_IMG img_in) {
     cudaEvent_t startEvent, stopEvent;
     float executionMS;
     PGM_IMG img_obuf;
-    bool CPU_timer = false;
+    bool CPU_timer = true;
     
     printf("Starting GPU processing...\n");
     //TODO: run your GPU implementation here

@@ -15,21 +15,32 @@ void run_gpu_color_test(PPM_IMG img_in);
 
 
 
-int main() {
+int main(int argc, char** argv) {
     PGM_IMG img_ibuf_g;
     PPM_IMG img_ibuf_c;
+
+    char *inputPGM;
+    char *inputPPM;
+    
+    if (argc == 3){
+        inputPGM = argv[1];
+        inputPPM = argv[2];
+    } else {
+        inputPGM = "in.pgm";
+        inputPPM = "in.ppm";
+    }
     
     // Ensure cuda is setup and functioning correctly. Also does first cudaMalloc, taking care of extra cost of first cudaMalloc
     assert(cuda_test());
     
     printf("Running contrast enhancement for gray-scale images.\n");
-    img_ibuf_g = read_pgm("in.pgm");
+    img_ibuf_g = read_pgm(inputPGM);
     run_cpu_gray_test(img_ibuf_g);
     run_gpu_gray_test(img_ibuf_g);
     free_pgm(img_ibuf_g);
     
     printf("\nRunning contrast enhancement for color images.\n");
-    img_ibuf_c = read_ppm("in.ppm");
+    img_ibuf_c = read_ppm(inputPPM);
     run_cpu_color_test(img_ibuf_c);
     run_gpu_color_test(img_ibuf_c);
     free_ppm(img_ibuf_c);
