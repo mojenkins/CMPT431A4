@@ -9,7 +9,7 @@
 // helper for shared that are common to CUDA Samples
 #include <helper_functions.h>
 
-const int imageDepth = 256; //*** Hard coded. Only 8-bit images supported
+const int imageDepth = 256; //*** Hard coded. Only 8-bit images supported 
 
 __global__ void rgb2hsl_kernel(int img_size, unsigned char *gpu_img_in_r, unsigned char *gpu_img_in_g, unsigned char *gpu_img_in_b, float *gpu_img_out_h, float *gpu_img_out_s, unsigned char *gpu_img_out_l) {
     int index = blockIdx.x*blockDim.x + threadIdx.x;
