@@ -196,7 +196,7 @@ PPM_IMG gpu_contrast_enhancement_c_hsl(PPM_IMG img_in) {
     imageHSL.l = equalizedL;
     free(equalizedL);
     
-    result = hsl2rgb(imageHSL);
+    result = gpu_hsl2rgb(imageHSL);
     free(imageHSL.h);
     free(imageHSL.s);
     free(imageHSL.l);

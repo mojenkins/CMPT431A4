@@ -102,8 +102,8 @@ HSL_IMG gpu_rgb2hsl(PPM_IMG img_in) {
     rgb2hsl_kernel<<<img_size/512+1,512>>>(img_size, gpu_img_in_r, gpu_img_in_g, gpu_img_in_b, gpu_img_out_h, gpu_img_out_s, gpu_img_out_l);
     
     // Copy resultant image from gpu
-    cudaMemcpy( img_out.h, gpu_img_out_h, img_size * sizeof(unsigned char), cudaMemcpyDeviceToHost );
-    cudaMemcpy( img_out.s, gpu_img_out_s, img_size * sizeof(unsigned char), cudaMemcpyDeviceToHost );
+    cudaMemcpy( img_out.h, gpu_img_out_h, img_size * sizeof(float), cudaMemcpyDeviceToHost );
+    cudaMemcpy( img_out.s, gpu_img_out_s, img_size * sizeof(float), cudaMemcpyDeviceToHost );
     cudaMemcpy( img_out.l, gpu_img_out_l, img_size * sizeof(unsigned char), cudaMemcpyDeviceToHost );
     
     //free gpu memory
@@ -115,5 +115,110 @@ HSL_IMG gpu_rgb2hsl(PPM_IMG img_in) {
     cudaFree(gpu_img_out_l);
     
     return img_out;
+}
+
+__global__ void hsl2rgb_kernel(int img_size, float *gpu_img_in_h, float *gpu_img_in_s, unsigned char *gpu_img_in_l, unsigned char *gpu_img_out_r, unsigned char *gpu_img_out_g, unsigned char *gpu_img_out_b) {
+    int index = blockIdx.x*blockDim.x + threadIdx.x;
+    if (index < img_size){
+				float H = img_in.h[index];
+        float S = img_in.s[index];
+        float L = img_in.l[index]/255.0f;
+        float var_1, var_2;
+        
+        unsigned char r,g,b;
+        
+        if ( S == 0 )
+        {
+            r = L * 255;
+            g = L * 255;
+            b = L * 255;
+        }
+
+        else
+        {
+						var2 = (L < 0.5) ? (L * (1 + S)) : ((L + S) - (S * L));
+						var1 = 2 * L - var2
+						
+						//calculate r
+						float rvH = H + (1.0f/3.0f);
+						rvH = (rvH < 0) ? rvH+1 : rvH;
+						rvH = (rvH > 1) ? rvH-1 : rvH;
+						r = 255 * var1;
+						r = ((3*rvH) < 2) ? (255 * (var1 + ( var2 - var1 ) * (( 2.0f/3.0f) - rvH) * 6)) : r;
+						r = ((2*rvH) < 1) ? (255 * var2) : r;
+						r = ((6*rvH) < 1) ? (255 * (var1 + ( var2 - var1 ) * 6 * rvH )) : r;
+
+						//calculate g
+						float gvH = H;
+						gvH = (gvH < 0) ? gvH+1 : gvH;
+						gvH = (gvH > 1) ? gvH-1 : gvH;
+						g = 255 * var1;
+						g = ((3*gvH) < 2) ? (255 * (var1 + ( var2 - var1 ) * (( 2.0f/3.0f) - gvH) * 6)) : g;
+						g = ((2*gvH) < 1) ? (255 * var2) : g;
+						g = ((6*gvH) < 1) ? (255 * (var1 + ( var2 - var1 ) * 6 * gvH )) : g;
+
+						//calculate b
+						float bvH = H - (1.0f/3.0f);
+						bvH = (bvH < 0) ? bvH+1 : bvH;
+						bvH = (bvH > 1) ? bvH-1 : bvH;
+						b = 255 * var1;
+						b = ((3*bvH) < 2) ? (255 * (var1 + ( var2 - var1 ) * (( 2.0f/3.0f) - bvH) * 6)) : b;
+						b = ((2*bvH) < 1) ? (255 * var2) : b;
+						b = ((6*bvH) < 1) ? (255 * (var1 + ( var2 - var1 ) * 6 * bvH )) : b;
+        }
+
+        gpu_img_out_r[index] = r;
+        gpu_img_out_g[index] = g;
+        gpu_img_out_b[index = b;
+		}
+}
+
+//Convert HSL to RGB, assume H, S in [0.0, 1.0] and L in [0, 255]
+//Output R,G,B in [0, 255]
+PPM_IMG gpu_hsl2rgb(HSL_IMG img_in) {
+    int i;
+    PPM_IMG result;
     
+		int img_size = img_in.width * img_in.height;
+    result.w = img_in.width;
+    result.h = img_in.height;
+    result.img_r = (unsigned char *)malloc(img_size * sizeof(unsigned char));
+    result.img_g = (unsigned char *)malloc(img_size* sizeof(unsigned char));
+    result.img_b = (unsigned char *)malloc(img_size * sizeof(unsigned char));
+
+
+    // Set up pointers for gpu device memory
+    unsigned char *gpu_img_out_r, *gpu_img_out_g, *gpu_img_out_b, *gpu_img_in_l;
+    float *gpu_img_in_h, *gpu_img_in_s;
+    
+    // Allocate memory on GPU
+    cudaMalloc( (void**)&gpu_img_out_r, img_size * sizeof(unsigned char) );
+    cudaMalloc( (void**)&gpu_img_out_g, img_size * sizeof(unsigned char) );
+    cudaMalloc( (void**)&gpu_img_out_b, img_size * sizeof(unsigned char) );
+    cudaMalloc( (void**)&gpu_img_in_h, img_size * sizeof(unsigned char) );
+    cudaMalloc( (void**)&gpu_img_in_s, img_size * sizeof(unsigned char) );
+    cudaMalloc( (void**)&gpu_img_in_l, img_size * sizeof(unsigned char) );
+    
+    // Copy input image to gpu
+    cudaMemcpy( gpu_img_in_h, img_in.h, img_size * sizeof(float), cudaMemcpyHostToDevice );
+    cudaMemcpy( gpu_img_in_s, img_in.s, img_size * sizeof(float), cudaMemcpyHostToDevice );
+    cudaMemcpy( gpu_img_in_l, img_in.l, img_size * sizeof(unsigned char), cudaMemcpyHostToDevice );
+    
+    // call kernel
+    hsl2rgb_kernel<<<img_size/512+1,512>>>(img_size, gpu_img_in_h, gpu_img_in_s, gpu_img_in_l, gpu_img_out_r, gpu_img_out_g, gpu_img_out_b);
+    
+    // Copy resultant image from gpu
+    cudaMemcpy( result.img_r, gpu_img_out_r, img_size * sizeof(unsigned char), cudaMemcpyDeviceToHost );
+    cudaMemcpy( result.img_g, gpu_img_out_g, img_size * sizeof(unsigned char), cudaMemcpyDeviceToHost );
+    cudaMemcpy( result.img_b, gpu_img_out_b, img_size * sizeof(unsigned char), cudaMemcpyDeviceToHost );
+    
+    //free gpu memory
+    cudaFree(gpu_img_in_h);
+    cudaFree(gpu_img_in_s);
+    cudaFree(gpu_img_in_l);
+    cudaFree(gpu_img_out_r);
+    cudaFree(gpu_img_out_g);
+    cudaFree(gpu_img_out_b);
+		
+    return result;
 }
