@@ -1,0 +1,111 @@
+
+-------------------------------------
+Running contrast enhancement for gray-scale images.
+Image size: 32 x 32
+Starting CPU processing...
+   Processing time: 0.011000 (ms)
+Starting GPU processing...
+   Processing time (CPU timer): 0.723000 (ms)
+
+Running contrast enhancement for color images.
+Image size: 32 x 32
+Starting CPU processing...
+   HSL processing time: 0.096000 (ms)
+   YUV processing time: 0.051000 (ms)
+Starting GPU processing...
+   HSL processing time (CPU timer): 1.849000 (ms)
+   YUV processing time (CPU timer): 1.518000 (ms)
+-------------------------------------
+Running contrast enhancement for gray-scale images.
+Image size: 128 x 128
+Starting CPU processing...
+   Processing time: 0.114000 (ms)
+Starting GPU processing...
+   Processing time (CPU timer): 1.057000 (ms)
+
+Running contrast enhancement for color images.
+Image size: 128 x 128
+Starting CPU processing...
+   HSL processing time: 1.489000 (ms)
+   YUV processing time: 0.734000 (ms)
+Starting GPU processing...
+   HSL processing time (CPU timer): 2.394000 (ms)
+   YUV processing time (CPU timer): 1.978000 (ms)
+-------------------------------------
+Running contrast enhancement for gray-scale images.
+Image size: 256 x 256
+Starting CPU processing...
+   Processing time: 0.450000 (ms)
+Starting GPU processing...
+   Processing time (CPU timer): 1.171000 (ms)
+
+Running contrast enhancement for color images.
+Image size: 256 x 256
+Starting CPU processing...
+   HSL processing time: 6.079000 (ms)
+   YUV processing time: 3.133000 (ms)
+Starting GPU processing...
+   HSL processing time (CPU timer): 3.385000 (ms)
+   YUV processing time (CPU timer): 2.594000 (ms)
+-------------------------------------
+Running contrast enhancement for gray-scale images.
+Image size: 512 x 512
+Starting CPU processing...
+   Processing time: 1.982000 (ms)
+Starting GPU processing...
+   Processing time (CPU timer): 2.694000 (ms)
+
+Running contrast enhancement for color images.
+Image size: 512 x 512
+Starting CPU processing...
+   HSL processing time: 28.091999 (ms)
+   YUV processing time: 14.392000 (ms)
+Starting GPU processing...
+   HSL processing time (CPU timer): 8.212000 (ms)
+   YUV processing time (CPU timer): 5.844000 (ms)
+-------------------------------------
+Running contrast enhancement for gray-scale images.
+Image size: 1024 x 1024
+Starting CPU processing...
+   Processing time: 7.099000 (ms)
+Starting GPU processing...
+   Processing time (CPU timer): 5.820000 (ms)
+
+Running contrast enhancement for color images.
+Image size: 1024 x 1024
+Starting CPU processing...
+   HSL processing time: 83.233002 (ms)
+   YUV processing time: 49.740002 (ms)
+Starting GPU processing...
+   HSL processing time (CPU timer): 24.542999 (ms)
+-------------------------------------
+Running contrast enhancement for gray-scale images.
+Image size: 1920 x 1440
+Starting CPU processing...
+   Processing time: 18.392000 (ms)
+Starting GPU processing...
+   Processing time (CPU timer): 8.575000 (ms)
+
+Running contrast enhancement for color images.
+Image size: 1920 x 1440
+Starting CPU processing...
+   HSL processing time: 251.399994 (ms)
+   YUV processing time: 126.180000 (ms)
+Starting GPU processing...
+   HSL processing time (CPU timer): 49.002998 (ms)
+-------------------------------------
+Running contrast enhancement for gray-scale images.
+Image size: 3648 x 2736
+Starting CPU processing...
+   Processing time: 69.753998 (ms)
+Starting GPU processing...
+   Processing time (CPU timer): 25.788000 (ms)
+
+Running contrast enhancement for color images.
+Image size: 3648 x 2736
+Starting CPU processing...
+   HSL processing time: 905.424011 (ms)
+   YUV processing time: 449.308014 (ms)
+Starting GPU processing...
+   HSL processing time (CPU timer): 159.197006 (ms)
+   YUV processing time (CPU timer): 119.707001 (ms)
