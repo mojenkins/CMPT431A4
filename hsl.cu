@@ -194,8 +194,8 @@ PPM_IMG gpu_hsl2rgb(HSL_IMG img_in) {
     cudaMalloc( (void**)&gpu_img_out_r, img_size * sizeof(unsigned char) );
     cudaMalloc( (void**)&gpu_img_out_g, img_size * sizeof(unsigned char) );
     cudaMalloc( (void**)&gpu_img_out_b, img_size * sizeof(unsigned char) );
-    cudaMalloc( (void**)&gpu_img_in_h, img_size * sizeof(unsigned char) );
-    cudaMalloc( (void**)&gpu_img_in_s, img_size * sizeof(unsigned char) );
+    cudaMalloc( (void**)&gpu_img_in_h, img_size * sizeof(float) );
+    cudaMalloc( (void**)&gpu_img_in_s, img_size * sizeof(float) );
     cudaMalloc( (void**)&gpu_img_in_l, img_size * sizeof(unsigned char) );
     
     // Copy input image to gpu
