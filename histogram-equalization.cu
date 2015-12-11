@@ -49,7 +49,7 @@ __global__ void histogram_equilization_work(int img_size, int* gpu_lut, unsigned
 	__shared__ int shared_lut[256];
 
 	if (threadIdx.x < 256){
-		shared_lut[index] = gpu_lut[index];
+		shared_lut[threadIdx.x] = gpu_lut[threadIdx.x];
 	}
 
 	__syncthreads();
