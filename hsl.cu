@@ -167,9 +167,9 @@ __global__ void hsl2rgb_kernel(int img_size, float *gpu_img_in_h, float *gpu_img
 						b = ((6*bvH) < 1) ? (255 * (var1 + ( var2 - var1 ) * 6 * bvH )) : b;
         }
 
-        gpu_img_out_r[index] = r;
-        gpu_img_out_g[index] = g;
-        gpu_img_out_b[index] = b;
+        gpu_img_out_r[index] = (unsigned char) r;
+        gpu_img_out_g[index] = (unsigned char) g;
+        gpu_img_out_b[index] = (unsigned char) b;
 		}
 }
 

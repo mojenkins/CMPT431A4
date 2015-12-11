@@ -44,8 +44,10 @@ void gpu_histogram(int * hist_out, unsigned char * img_in, int img_size, int nbr
 }
 
 __global__ void histogram_equilization_work(int img_size, int* gpu_lut, unsigned char* gpu_img_in, unsigned char* gpu_img_out){
-	if (blockIdx.x*blockDim.x + threadIdx.x < img_size){
-    	gpu_img_out[blockIdx.x*blockDim.x + threadIdx.x] = (gpu_lut[gpu_img_in[blockIdx.x*blockDim.x + threadIdx.x]] > 255) ? 255 : gpu_lut[gpu_img_in[blockIdx.x*blockDim.x + threadIdx.x]];
+	
+	int index = blockIdx.x*blockDim.x + threadIdx.x;
+	if (index < img_size){
+    	gpu_img_out[index] = (unsigned char) (gpu_lut[gpu_img_in[index]] > 255) ? 255 : (unsigned char) gpu_lut[gpu_img_in[index]];
 	}
 }
 
@@ -89,7 +91,7 @@ void gpu_histogram_equalization(unsigned char * img_out,
     cudaMalloc( (void**)&gpu_img_out, img_size * sizeof(unsigned char) );
     cudaMalloc( (void**)&gpu_lut, (nbr_bin) * sizeof(int) );
     
-    // Copy img_in and cdf to gpu
+    // Copy img_in and lut to gpu
     cudaMemcpy( gpu_img_in, img_in, img_size * sizeof(unsigned char), cudaMemcpyHostToDevice );
     cudaMemcpy( gpu_lut, lut, (nbr_bin) * sizeof(int), cudaMemcpyHostToDevice );
     free(lut);

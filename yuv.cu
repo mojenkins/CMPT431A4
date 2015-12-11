@@ -38,21 +38,6 @@ YUV_IMG gpu_rgb2yuv(PPM_IMG img_in)
     img_out.img_u = (unsigned char *)malloc( sizeof(unsigned char)*img_size );
     img_out.img_v = (unsigned char *)malloc( sizeof(unsigned char)*img_size );
 
-    // Sequential version
-    // for(i = 0; i < img_out.w*img_out.h; i ++){
-    //     r = img_in.img_r[i];
-    //     g = img_in.img_g[i];
-    //     b = img_in.img_b[i];
-        
-    //     y  = (unsigned char)( 0.299*r + 0.587*g +  0.114*b);
-    //     cb = (unsigned char)(-0.169*r - 0.331*g +  0.499*b + 128);
-    //     cr = (unsigned char)( 0.499*r - 0.418*g - 0.0813*b + 128);
-        
-    //     img_out.img_y[i] = y;
-    //     img_out.img_u[i] = cb;
-    //     img_out.img_v[i] = cr;
-    // }
-
     //GPU version
     // Set up pointers for gpu device memory
     unsigned char * gpu_img_in_r, * gpu_img_in_g, * gpu_img_in_b, * gpu_img_out_y, * gpu_img_out_u, * gpu_img_out_v;
@@ -122,21 +107,6 @@ PPM_IMG gpu_yuv2rgb(YUV_IMG img_in)
     img_out.img_r = (unsigned char *)malloc(sizeof(unsigned char)*img_size);
     img_out.img_g = (unsigned char *)malloc(sizeof(unsigned char)*img_size);
     img_out.img_b = (unsigned char *)malloc(sizeof(unsigned char)*img_size);
-
-    //Sequential version
-    // for(i = 0; i < img_out.w*img_out.h; i ++){
-    //     y  = (int)img_in.img_y[i];
-    //     cb = (int)img_in.img_u[i] - 128;
-    //     cr = (int)img_in.img_v[i] - 128;
-        
-    //     rt  = (int)( y + 1.402*cr);
-    //     gt  = (int)( y - 0.344*cb - 0.714*cr);
-    //     bt  = (int)( y + 1.772*cb);
-
-    //     img_out.img_r[i] = clip_rgb(rt);
-    //     img_out.img_g[i] = clip_rgb(gt);
-    //     img_out.img_b[i] = clip_rgb(bt);
-    // }
 
     //GPU version
     // Set up pointers for gpu device memory
