@@ -5,13 +5,43 @@ Image size: 32 x 32
 Starting CPU processing...
    Processing time: 0.011000 (ms)
 Starting GPU processing...
-   Processing time (CPU timer): 0.360000 (ms)
+   Processing time (CPU timer): 0.364000 (ms)
 
 Running contrast enhancement for color images.
 Image size: 32 x 32
 Starting CPU processing...
-   HSL processing time: 0.091000 (ms)
-   YUV processing time: 0.051000 (ms)
+   HSL processing time: 0.093000 (ms)
+   YUV processing time: 0.050000 (ms)
+Starting GPU processing...
+   HSL processing time (CPU timer): 1.002000 (ms)
+   YUV processing time (CPU timer): 0.790000 (ms)
+==9314== Profiling application: ./5kk70-assignment-gpu input/32.pgm input/32.ppm
+==9314== Profiling result:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 36.31%  29.536us        19  1.5540us  1.4080us  1.7920us  [CUDA memcpy DtoH]
+ 21.87%  17.792us        23     773ns     576ns  1.0880us  [CUDA memcpy HtoD]
+ 11.76%  9.5690us         1  9.5690us  9.5690us  9.5690us  rgb2hsl_kernel(int, unsigned char*, unsigned char*, unsigned char*, float*, float*, unsigned char*)
+  7.43%  6.0480us         3  2.0160us  1.8240us  2.1760us  histogram_work(int, unsigned char*, int*)
+  7.24%  5.8890us         3  1.9630us  1.8880us  2.1120us  histogram_equilization_work(int, int*, unsigned char*, unsigned char*)
+  5.94%  4.8330us         1  4.8330us  4.8330us  4.8330us  hsl2rgb_kernel(int, float*, float*, unsigned char*, unsigned char*, unsigned char*, unsigned char*)
+  3.62%  2.9440us         1  2.9440us  2.9440us  2.9440us  rgb2yuv_work(int, unsigned char*, unsigned char*, unsigned char*, unsigned char*, unsigned char*, unsigned char*)
+  3.19%  2.5920us         1  2.5920us  2.5920us  2.5920us  yuv2rgb_work(int, unsigned char*, unsigned char*, unsigned char*, unsigned char*, unsigned char*, unsigned char*)
+  2.64%  2.1440us         1  2.1440us  2.1440us  2.1440us  cuda_test_kernel(int*, int*)
+
+==9314== API calls:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 96.38%  38.597ms        41  941.39us  2.7260us  37.634ms  cudaMalloc
+  1.77%  709.46us        41  17.303us  2.7920us  55.426us  cudaFree
+  0.98%  392.69us        42  9.3490us  4.0570us  19.093us  cudaMemcpy
+  0.42%  166.36us        83  2.0040us     158ns  69.561us  cuDeviceGetAttribute
+  0.31%  123.85us        11  11.259us  9.0530us  21.136us  cudaLaunch
+  0.05%  21.955us         1  21.955us  21.955us  21.955us  cuDeviceTotalMem
+  0.04%  17.200us         1  17.200us  17.200us  17.200us  cuDeviceGetName
+  0.03%  11.612us        51     227ns     146ns  1.8460us  cudaSetupArgument
+  0.01%  4.0110us        11     364ns     302ns     614ns  cudaConfigureCall
+  0.00%     785ns         2     392ns     229ns     556ns  cuDeviceGetCount
+  0.00%     481ns         2     240ns     174ns     307ns  cuDeviceGet
+
 -------------------------------------
 Running contrast enhancement for gray-scale images.
 Image size: 128 x 128
@@ -28,6 +58,35 @@ Starting CPU processing...
 Starting GPU processing...
    HSL processing time (CPU timer): 1.312000 (ms)
    YUV processing time (CPU timer): 1.028000 (ms)
+
+==8782== NVPROF is profiling process 8782, command: ./5kk70-assignment-gpu input/128.pgm input/128.ppm
+==8782== Profiling application: ./5kk70-assignment-gpu input/128.pgm input/128.ppm
+==8782== Profiling result:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 33.04%  60.931us        23  2.6490us     609ns  8.3530us  [CUDA memcpy HtoD]
+ 29.97%  55.266us        19  2.9080us  1.4720us  6.6880us  [CUDA memcpy DtoH]
+  9.25%  17.057us         3  5.6850us  4.3520us  8.1290us  histogram_work(int, unsigned char*, int*)
+  8.87%  16.353us         1  16.353us  16.353us  16.353us  rgb2hsl_kernel(int, unsigned char*, unsigned char*, unsigned char*, float*, float*, unsigned char*)
+  5.33%  9.8240us         3  3.2740us  3.2000us  3.3280us  histogram_equilization_work(int, int*, unsigned char*, unsigned char*)
+  4.79%  8.8320us         1  8.8320us  8.8320us  8.8320us  rgb2yuv_work(int, unsigned char*, unsigned char*, unsigned char*, unsigned char*, unsigned char*, unsigned char*)
+  4.01%  7.3930us         1  7.3930us  7.3930us  7.3930us  hsl2rgb_kernel(int, float*, float*, unsigned char*, unsigned char*, unsigned char*, unsigned char*)
+  3.51%  6.4640us         1  6.4640us  6.4640us  6.4640us  yuv2rgb_work(int, unsigned char*, unsigned char*, unsigned char*, unsigned char*, unsigned char*, unsigned char*)
+  1.23%  2.2720us         1  2.2720us  2.2720us  2.2720us  cuda_test_kernel(int*, int*)
+
+==8782== API calls:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 95.49%  39.028ms        41  951.91us  2.7120us  37.706ms  cudaMalloc
+  2.30%  939.94us        41  22.925us  2.7410us  59.478us  cudaFree
+  1.39%  569.06us        42  13.549us  4.0050us  40.059us  cudaMemcpy
+  0.41%  165.65us        83  1.9950us     152ns  69.428us  cuDeviceGetAttribute
+  0.27%  111.18us        11  10.107us  8.9450us  12.210us  cudaLaunch
+  0.05%  21.940us         1  21.940us  21.940us  21.940us  cuDeviceTotalMem
+  0.04%  17.686us         1  17.686us  17.686us  17.686us  cuDeviceGetName
+  0.03%  11.642us        51     228ns     145ns  1.7560us  cudaSetupArgument
+  0.01%  4.1640us        11     378ns     304ns     660ns  cudaConfigureCall
+  0.00%  1.0370us         2     518ns     245ns     792ns  cuDeviceGetCount
+  0.00%     559ns         2     279ns     172ns     387ns  cuDeviceGet
+
 -------------------------------------
 Running contrast enhancement for gray-scale images.
 Image size: 256 x 256
@@ -44,6 +103,35 @@ Starting CPU processing...
 Starting GPU processing...
    HSL processing time (CPU timer): 1.687000 (ms)
    YUV processing time (CPU timer): 1.239000 (ms)
+
+==8790== NVPROF is profiling process 8790, command: ./5kk70-assignment-gpu input/256.pgm input/256.ppm
+==8790== Profiling application: ./5kk70-assignment-gpu input/256.pgm input/256.ppm
+==8790== Profiling result:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 36.70%  182.15us        23  7.9190us     608ns  22.561us  [CUDA memcpy HtoD]
+ 27.65%  137.22us        19  7.2220us  1.4720us  22.273us  [CUDA memcpy DtoH]
+  8.89%  44.129us         1  44.129us  44.129us  44.129us  rgb2hsl_kernel(int, unsigned char*, unsigned char*, unsigned char*, float*, float*, unsigned char*)
+  6.62%  32.832us         3  10.944us  10.336us  11.488us  histogram_work(int, unsigned char*, int*)
+  5.80%  28.800us         1  28.800us  28.800us  28.800us  rgb2yuv_work(int, unsigned char*, unsigned char*, unsigned char*, unsigned char*, unsigned char*, unsigned char*)
+  5.48%  27.202us         3  9.0670us  8.9280us  9.2170us  histogram_equilization_work(int, int*, unsigned char*, unsigned char*)
+  4.31%  21.409us         1  21.409us  21.409us  21.409us  hsl2rgb_kernel(int, float*, float*, unsigned char*, unsigned char*, unsigned char*, unsigned char*)
+  4.14%  20.545us         1  20.545us  20.545us  20.545us  yuv2rgb_work(int, unsigned char*, unsigned char*, unsigned char*, unsigned char*, unsigned char*, unsigned char*)
+  0.41%  2.0160us         1  2.0160us  2.0160us  2.0160us  cuda_test_kernel(int*, int*)
+
+==8790== API calls:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 94.10%  39.091ms        41  953.45us  2.7600us  37.756ms  cudaMalloc
+  2.77%  1.1490ms        42  27.357us  4.1690us  110.46us  cudaMemcpy
+  2.31%  960.59us        41  23.429us  2.6650us  55.095us  cudaFree
+  0.41%  168.53us        83  2.0300us     158ns  70.452us  cuDeviceGetAttribute
+  0.28%  116.22us        11  10.565us  9.4810us  12.801us  cudaLaunch
+  0.05%  22.250us         1  22.250us  22.250us  22.250us  cuDeviceTotalMem
+  0.04%  17.805us         1  17.805us  17.805us  17.805us  cuDeviceGetName
+  0.03%  11.908us        51     233ns     146ns  2.0030us  cudaSetupArgument
+  0.01%  4.0550us        11     368ns     287ns     663ns  cudaConfigureCall
+  0.00%  1.1220us         2     561ns     200ns     922ns  cuDeviceGetCount
+  0.00%     545ns         2     272ns     213ns     332ns  cuDeviceGet
+
 -------------------------------------
 Running contrast enhancement for gray-scale images.
 Image size: 512 x 512
@@ -60,6 +148,34 @@ Starting CPU processing...
 Starting GPU processing...
    HSL processing time (CPU timer): 3.509000 (ms)
    YUV processing time (CPU timer): 2.172000 (ms)
+
+==9177== Profiling application: ./5kk70-assignment-gpu input/512.pgm input/512.ppm
+==9177== Profiling result:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 32.00%  531.08us        23  23.090us     576ns  84.162us  [CUDA memcpy HtoD]
+ 27.86%  462.38us        19  24.335us  1.5040us  83.714us  [CUDA memcpy DtoH]
+ 10.27%  170.40us         1  170.40us  170.40us  170.40us  rgb2hsl_kernel(int, unsigned char*, unsigned char*, unsigned char*, float*, float*, unsigned char*)
+  8.94%  148.42us         3  49.473us  38.304us  71.394us  histogram_work(int, unsigned char*, int*)
+  6.55%  108.71us         1  108.71us  108.71us  108.71us  rgb2yuv_work(int, unsigned char*, unsigned char*, unsigned char*, unsigned char*, unsigned char*, unsigned char*)
+  4.87%  80.897us         3  26.965us  26.528us  27.361us  histogram_equilization_work(int, int*, unsigned char*, unsigned char*)
+  4.73%  78.465us         1  78.465us  78.465us  78.465us  yuv2rgb_work(int, unsigned char*, unsigned char*, unsigned char*, unsigned char*, unsigned char*, unsigned char*)
+  4.64%  77.058us         1  77.058us  77.058us  77.058us  hsl2rgb_kernel(int, float*, float*, unsigned char*, unsigned char*, unsigned char*, unsigned char*)
+  0.13%  2.1440us         1  2.1440us  2.1440us  2.1440us  cuda_test_kernel(int*, int*)
+
+==9177== API calls:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 89.39%  41.870ms        41  1.0212ms  1.8600us  40.281ms  cudaMalloc
+  7.48%  3.5027ms        42  83.396us  4.3890us  454.91us  cudaMemcpy
+  2.38%  1.1148ms        41  27.191us  3.0020us  56.178us  cudaFree
+  0.36%  166.90us        83  2.0100us     153ns  69.688us  cuDeviceGetAttribute
+  0.27%  126.79us        11  11.526us  9.3120us  16.676us  cudaLaunch
+  0.05%  21.985us         1  21.985us  21.985us  21.985us  cuDeviceTotalMem
+  0.04%  17.830us         1  17.830us  17.830us  17.830us  cuDeviceGetName
+  0.03%  12.682us        51     248ns     146ns  2.0940us  cudaSetupArgument
+  0.01%  4.4830us        11     407ns     316ns     625ns  cudaConfigureCall
+  0.00%     909ns         2     454ns     224ns     685ns  cuDeviceGetCount
+  0.00%     526ns         2     263ns     176ns     350ns  cuDeviceGet
+
 -------------------------------------
 Running contrast enhancement for gray-scale images.
 Image size: 1024 x 1024
@@ -76,6 +192,35 @@ Starting CPU processing...
 Starting GPU processing...
    HSL processing time (CPU timer): 9.702000 (ms)
    YUV processing time (CPU timer): 6.311000 (ms)
+
+==8807== NVPROF is profiling process 8807, command: ./5kk70-assignment-gpu input/1024.pgm input/1024.ppm
+==8807== Profiling application: ./5kk70-assignment-gpu input/1024.pgm input/1024.ppm
+==8807== Profiling result:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 31.02%  2.6968ms        19  141.94us  1.4720us  1.0514ms  [CUDA memcpy DtoH]
+ 29.51%  2.5650ms        23  111.52us     608ns  611.98us  [CUDA memcpy HtoD]
+ 15.09%  1.3119ms         3  437.29us  389.83us  523.05us  histogram_work(int, unsigned char*, int*)
+  8.84%  768.59us         1  768.59us  768.59us  768.59us  rgb2hsl_kernel(int, unsigned char*, unsigned char*, unsigned char*, float*, float*, unsigned char*)
+  4.92%  427.53us         1  427.53us  427.53us  427.53us  rgb2yuv_work(int, unsigned char*, unsigned char*, unsigned char*, unsigned char*, unsigned char*, unsigned char*)
+  3.63%  315.97us         1  315.97us  315.97us  315.97us  hsl2rgb_kernel(int, float*, float*, unsigned char*, unsigned char*, unsigned char*, unsigned char*)
+  3.49%  303.56us         3  101.19us  99.714us  102.15us  histogram_equilization_work(int, int*, unsigned char*, unsigned char*)
+  3.47%  301.67us         1  301.67us  301.67us  301.67us  yuv2rgb_work(int, unsigned char*, unsigned char*, unsigned char*, unsigned char*, unsigned char*, unsigned char*)
+  0.02%  2.1440us         1  2.1440us  2.1440us  2.1440us  cuda_test_kernel(int*, int*)
+
+==8807== API calls:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 72.19%  40.415ms        41  985.73us  5.6170us  37.714ms  cudaMalloc
+ 23.97%  13.422ms        42  319.56us  4.0540us  1.5447ms  cudaMemcpy
+  3.15%  1.7634ms        41  43.009us  6.2950us  72.578us  cudaFree
+  0.30%  166.59us        83  2.0070us     155ns  69.535us  cuDeviceGetAttribute
+  0.29%  161.17us        11  14.651us  10.400us  26.034us  cudaLaunch
+  0.04%  22.287us         1  22.287us  22.287us  22.287us  cuDeviceTotalMem
+  0.03%  18.087us         1  18.087us  18.087us  18.087us  cuDeviceGetName
+  0.02%  12.598us        51     247ns     145ns  1.8240us  cudaSetupArgument
+  0.01%  4.9190us        11     447ns     319ns     764ns  cudaConfigureCall
+  0.00%  1.0160us         2     508ns     239ns     777ns  cuDeviceGetCount
+  0.00%     547ns         2     273ns     180ns     367ns  cuDeviceGet
+
 -------------------------------------
 Running contrast enhancement for gray-scale images.
 Image size: 1920 x 1440
@@ -92,6 +237,35 @@ Starting CPU processing...
 Starting GPU processing...
    HSL processing time (CPU timer): 19.698999 (ms)
    YUV processing time (CPU timer): 12.301000 (ms)
+
+==8815== NVPROF is profiling process 8815, command: ./5kk70-assignment-gpu input/1920.pgm input/1920.ppm
+==8815== Profiling application: ./5kk70-assignment-gpu input/1920.pgm input/1920.ppm
+==8815== Profiling result:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 35.54%  9.0410ms        23  393.09us     576ns  1.7358ms  [CUDA memcpy HtoD]
+ 33.72%  8.5788ms        19  451.51us  1.4720us  2.4166ms  [CUDA memcpy DtoH]
+ 11.56%  2.9404ms         3  980.12us  975.02us  988.72us  histogram_work(int, unsigned char*, int*)
+  5.88%  1.4950ms         1  1.4950ms  1.4950ms  1.4950ms  rgb2hsl_kernel(int, unsigned char*, unsigned char*, unsigned char*, float*, float*, unsigned char*)
+  4.41%  1.1223ms         1  1.1223ms  1.1223ms  1.1223ms  rgb2yuv_work(int, unsigned char*, unsigned char*, unsigned char*, unsigned char*, unsigned char*, unsigned char*)
+  3.13%  795.89us         1  795.89us  795.89us  795.89us  yuv2rgb_work(int, unsigned char*, unsigned char*, unsigned char*, unsigned char*, unsigned char*, unsigned char*)
+  2.94%  748.33us         3  249.44us  248.84us  249.96us  histogram_equilization_work(int, int*, unsigned char*, unsigned char*)
+  2.81%  716.11us         1  716.11us  716.11us  716.11us  hsl2rgb_kernel(int, float*, float*, unsigned char*, unsigned char*, unsigned char*, unsigned char*)
+  0.01%  2.0160us         1  2.0160us  2.0160us  2.0160us  cuda_test_kernel(int*, int*)
+
+==8815== API calls:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 55.09%  40.655ms        41  991.59us  5.6580us  37.850ms  cudaMalloc
+ 41.68%  30.763ms        42  732.45us  4.2040us  3.2514ms  cudaMemcpy
+  2.66%  1.9654ms        41  47.936us  6.4760us  103.57us  cudaFree
+  0.26%  191.96us        11  17.450us  10.500us  25.615us  cudaLaunch
+  0.23%  166.07us        83  2.0000us     153ns  69.556us  cuDeviceGetAttribute
+  0.03%  22.210us         1  22.210us  22.210us  22.210us  cuDeviceTotalMem
+  0.02%  17.801us         1  17.801us  17.801us  17.801us  cuDeviceGetName
+  0.02%  14.447us        51     283ns     143ns  1.9090us  cudaSetupArgument
+  0.01%  6.3990us        11     581ns     314ns  1.0860us  cudaConfigureCall
+  0.00%     909ns         2     454ns     224ns     685ns  cuDeviceGetCount
+  0.00%     567ns         2     283ns     196ns     371ns  cuDeviceGet
+
 -------------------------------------
 Running contrast enhancement for gray-scale images.
 Image size: 3648 x 2736
@@ -108,3 +282,32 @@ Starting CPU processing...
 Starting GPU processing...
    HSL processing time (CPU timer): 62.543999 (ms)
    YUV processing time (CPU timer): 38.581001 (ms)
+
+==8823== NVPROF is profiling process 8823, command: ./5kk70-assignment-gpu input/3000.pgm input/3000.ppm
+==8823== Profiling application: ./5kk70-assignment-gpu input/3000.pgm input/3000.ppm
+==8823== Profiling result:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 37.76%  38.155ms        23  1.6589ms     608ns  6.5498ms  [CUDA memcpy HtoD]
+ 34.81%  35.182ms        19  1.8517ms  1.4720us  8.1228ms  [CUDA memcpy DtoH]
+ 10.10%  10.205ms         3  3.4017ms  3.3345ms  3.5336ms  histogram_work(int, unsigned char*, int*)
+  5.30%  5.3569ms         1  5.3569ms  5.3569ms  5.3569ms  rgb2hsl_kernel(int, unsigned char*, unsigned char*, unsigned char*, float*, float*, unsigned char*)
+  4.00%  4.0458ms         1  4.0458ms  4.0458ms  4.0458ms  rgb2yuv_work(int, unsigned char*, unsigned char*, unsigned char*, unsigned char*, unsigned char*, unsigned char*)
+  2.84%  2.8740ms         1  2.8740ms  2.8740ms  2.8740ms  yuv2rgb_work(int, unsigned char*, unsigned char*, unsigned char*, unsigned char*, unsigned char*, unsigned char*)
+  2.64%  2.6696ms         3  889.88us  888.65us  891.50us  histogram_equilization_work(int, int*, unsigned char*, unsigned char*)
+  2.54%  2.5673ms         1  2.5673ms  2.5673ms  2.5673ms  hsl2rgb_kernel(int, float*, float*, unsigned char*, unsigned char*, unsigned char*, unsigned char*)
+  0.00%  2.2400us         1  2.2400us  2.2400us  2.2400us  cuda_test_kernel(int*, int*)
+
+==8823== API calls:
+Time(%)      Time     Calls       Avg       Min       Max  Name
+ 71.09%  106.51ms        42  2.5360ms  4.0670us  11.379ms  cudaMemcpy
+ 27.07%  40.553ms        41  989.10us  5.8810us  37.493ms  cudaMalloc
+  1.52%  2.2737ms        41  55.457us  6.4040us  98.762us  cudaFree
+  0.16%  239.59us        11  21.780us  12.043us  28.844us  cudaLaunch
+  0.11%  167.68us        83  2.0200us     154ns  70.325us  cuDeviceGetAttribute
+  0.02%  23.990us        51     470ns     147ns  7.5010us  cudaSetupArgument
+  0.01%  22.201us         1  22.201us  22.201us  22.201us  cuDeviceTotalMem
+  0.01%  18.116us         1  18.116us  18.116us  18.116us  cuDeviceGetName
+  0.01%  9.8610us        11     896ns     427ns  1.4190us  cudaConfigureCall
+  0.00%     880ns         2     440ns     251ns     629ns  cuDeviceGetCount
+  0.00%     500ns         2     250ns     159ns     341ns  cuDeviceGet
+
