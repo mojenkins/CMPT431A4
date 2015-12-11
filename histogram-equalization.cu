@@ -46,8 +46,16 @@ void gpu_histogram(int * hist_out, unsigned char * img_in, int img_size, int nbr
 __global__ void histogram_equilization_work(int img_size, int* gpu_lut, unsigned char* gpu_img_in, unsigned char* gpu_img_out){
 	
 	int index = blockIdx.x*blockDim.x + threadIdx.x;
+	__shared__ int shared_lut[256];
+
+	if (threadIdx.x < 256){
+		shared_lut[index] = gpu_lut[index];
+	}
+
+	__syncthreads();
+
 	if (index < img_size){
-    	gpu_img_out[index] = (unsigned char) (gpu_lut[gpu_img_in[index]] > 255) ? 255 : (unsigned char) gpu_lut[gpu_img_in[index]];
+    	gpu_img_out[index] = (unsigned char) (shared_lut[gpu_img_in[index]] > 255) ? 255 : (unsigned char) shared_lut[gpu_img_in[index]];
 	}
 }
 
