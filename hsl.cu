@@ -72,7 +72,7 @@ __global__ void rgb2hsl_kernel(int img_size, unsigned char *gpu_img_in_r, unsign
 
 //Convert RGB to HSL, assume R,G,B in [0, 255]
 //Output H, S in [0.0, 1.0] and L in [0, 255]
-HSL_IMG gpu_rgb2hsl(PPM_IMG img_in) {
+HSL_IMG gpu_rgb2hsl(PPM_IMG img_in, int blocksPerGrid, int threadsPerBlock) {
     int img_size = img_in.w * img_in.h;
     HSL_IMG img_out;// = (HSL_IMG *)malloc(sizeof(HSL_IMG));
     img_out.width  = img_in.w;
@@ -97,9 +97,9 @@ HSL_IMG gpu_rgb2hsl(PPM_IMG img_in) {
     cudaMemcpy( gpu_img_in_r, img_in.img_r, img_size * sizeof(unsigned char), cudaMemcpyHostToDevice );
     cudaMemcpy( gpu_img_in_g, img_in.img_g, img_size * sizeof(unsigned char), cudaMemcpyHostToDevice );
     cudaMemcpy( gpu_img_in_b, img_in.img_b, img_size * sizeof(unsigned char), cudaMemcpyHostToDevice );
-    
+
     // call kernel
-    rgb2hsl_kernel<<<img_size/512+1,512>>>(img_size, gpu_img_in_r, gpu_img_in_g, gpu_img_in_b, gpu_img_out_h, gpu_img_out_s, gpu_img_out_l);
+    rgb2hsl_kernel<<<blocksPerGrid, threadsPerBlock>>>(img_size, gpu_img_in_r, gpu_img_in_g, gpu_img_in_b, gpu_img_out_h, gpu_img_out_s, gpu_img_out_l);
     
     // Copy resultant image from gpu
     cudaMemcpy( img_out.h, gpu_img_out_h, img_size * sizeof(float), cudaMemcpyDeviceToHost );
@@ -175,10 +175,10 @@ __global__ void hsl2rgb_kernel(int img_size, float *gpu_img_in_h, float *gpu_img
 
 //Convert HSL to RGB, assume H, S in [0.0, 1.0] and L in [0, 255]
 //Output R,G,B in [0, 255]
-PPM_IMG gpu_hsl2rgb(HSL_IMG img_in) {
+PPM_IMG gpu_hsl2rgb(HSL_IMG img_in, int blocksPerGrid, int threadsPerBlock) {
     PPM_IMG result;
     
-		int img_size = img_in.width * img_in.height;
+    int img_size = img_in.width * img_in.height;
     result.w = img_in.width;
     result.h = img_in.height;
     result.img_r = (unsigned char *)malloc(img_size * sizeof(unsigned char));
@@ -204,7 +204,7 @@ PPM_IMG gpu_hsl2rgb(HSL_IMG img_in) {
     cudaMemcpy( gpu_img_in_l, img_in.l, img_size * sizeof(unsigned char), cudaMemcpyHostToDevice );
     
     // call kernel
-    hsl2rgb_kernel<<<img_size/512+1,512>>>(img_size, gpu_img_in_h, gpu_img_in_s, gpu_img_in_l, gpu_img_out_r, gpu_img_out_g, gpu_img_out_b);
+    hsl2rgb_kernel<<<blocksPerGrid, threadsPerBlock>>>(img_size, gpu_img_in_h, gpu_img_in_s, gpu_img_in_l, gpu_img_out_r, gpu_img_out_g, gpu_img_out_b);
     
     // Copy resultant image from gpu
     cudaMemcpy( result.img_r, gpu_img_out_r, img_size * sizeof(unsigned char), cudaMemcpyDeviceToHost );

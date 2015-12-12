@@ -58,13 +58,3 @@ void histogram_equalization(unsigned char *img_out,
     }
     free(lut);
 }
-
-
-
-
-
-
-
-
-
-

@@ -5,44 +5,99 @@
 #include <helper_cuda.h> // Utility and system includes
 #include <helper_functions.h> // helper for shared that are common to CUDA Samples
 #include <helper_timer.h>
+#include <getopt.h> // For reading command line input
 #include "hist-equ.h" // contains cuda function prototypes
+
+const int DEFAULT_THREADS_PER_BLOCK = 512;
 
 // Function prototypes
 void run_cpu_gray_test(PGM_IMG img_in);
-void run_gpu_gray_test(PGM_IMG img_in);
+void run_gpu_gray_test(PGM_IMG img_in, int blocksPerGrid, int threadsPerBlock);
 void run_cpu_color_test(PPM_IMG img_in);
-void run_gpu_color_test(PPM_IMG img_in);
+void run_gpu_color_test(PPM_IMG img_in, int blocksPerGrid, int threadsPerBlock);
 
 
+static struct option long_options[] =
+{
+    {"Input grayscale image", optional_argument, 0, 'g'},
+    {"Input color image", optional_argument, 0, 'c'},
+    {"Blocks per grid", optional_argument, 0, 'b'},
+    {"Threads per block", optional_argument, 0, 't'},
+    {0, 0, 0}
+};
 
 int main(int argc, char** argv) {
     PGM_IMG img_ibuf_g;
     PPM_IMG img_ibuf_c;
-
-    char *inputPGM;
-    char *inputPPM;
     
-    if (argc == 3){
-        inputPGM = argv[1];
-        inputPPM = argv[2];
-    } else {
-        inputPGM = "in.pgm";
-        inputPPM = "in.ppm";
+    /// Set default values
+    char *inputPGM = (char *)"in.pgm";
+    char *inputPPM = (char *)"in.ppm";
+    int blocksPerGrid = 0;
+    int threadsPerBlock = 0;
+    
+    // Read input options
+    while (true) {
+        int option_index = 0;
+        int c = getopt_long_only(argc, argv, "g:c:b:t:", long_options, &option_index);
+        
+        /* Detect the end of the options. */
+        if (c == -1)
+            break;
+        
+        switch (c) {
+            case 0:
+                /* If this option set a flag, do nothing else now. */
+                break;
+                
+            case 'g':
+                inputPGM = optarg;
+                break;
+                
+            case 'c':
+                inputPPM = optarg;
+                break;
+                
+            case 'b':
+                blocksPerGrid = atoi(optarg);
+                break;
+                
+            case 't':
+                threadsPerBlock = atoi(optarg);
+                break;
+                
+            default:
+                exit(1);
+        }
     }
     
-    // Ensure cuda is setup and functioning correctly. Also does first cudaMalloc, taking care of extra cost of first cudaMalloc
+    printf("Input grayscale image:    %s\n", inputPGM);
+    printf("Input color image:        %s\n", inputPPM);
+    if (blocksPerGrid == 0) {
+        printf("Blocks per grid:          default\n");
+    } else {
+        printf("Blocks per grid:          %d\n", blocksPerGrid);
+    }
+    if (threadsPerBlock == 0) {
+        printf("Threads per block:        default\n\n");
+    } else {
+        printf("Threads per block:        %d\n\n", threadsPerBlock);
+    }
+    
+    // Ensure cuda is setup and functioning correctly.
+    // Also does first cudaMalloc, taking care of extra cost of first cudaMalloc
     assert(cuda_test());
     
     printf("Running contrast enhancement for gray-scale images.\n");
     img_ibuf_g = read_pgm(inputPGM);
     run_cpu_gray_test(img_ibuf_g);
-    run_gpu_gray_test(img_ibuf_g);
+    run_gpu_gray_test(img_ibuf_g, blocksPerGrid, threadsPerBlock);
     free_pgm(img_ibuf_g);
     
     printf("\nRunning contrast enhancement for color images.\n");
     img_ibuf_c = read_ppm(inputPPM);
     run_cpu_color_test(img_ibuf_c);
-    run_gpu_color_test(img_ibuf_c);
+    run_gpu_color_test(img_ibuf_c, blocksPerGrid, threadsPerBlock);
     free_ppm(img_ibuf_c);
     
     return 0;
@@ -50,11 +105,19 @@ int main(int argc, char** argv) {
 
 
 
-void run_gpu_color_test(PPM_IMG img_in) {
+void run_gpu_color_test(PPM_IMG img_in, int blocksPerGrid, int threadsPerBlock) {
     printf("Starting GPU processing...\n");
     //TODO: run your GPU implementation here
     PPM_IMG img_obuf_hsl, img_obuf_yuv;
     bool CPU_timer = true;
+    
+    // Check for valid blocksPerGrid/threadsPerBlock
+    if (threadsPerBlock == 0) {
+        threadsPerBlock = DEFAULT_THREADS_PER_BLOCK;
+    }
+    if (blocksPerGrid == 0) {
+        blocksPerGrid = (img_in.h * img_in.w)/threadsPerBlock + 1;
+    }
     
     if (CPU_timer) {
         StopWatchInterface *timer=NULL;
@@ -62,7 +125,7 @@ void run_gpu_color_test(PPM_IMG img_in) {
         // Perform HSL constrast enhancement
         sdkCreateTimer(&timer);
         sdkStartTimer(&timer);
-        img_obuf_hsl = gpu_contrast_enhancement_c_hsl(img_in);
+        img_obuf_hsl = gpu_contrast_enhancement_c_hsl(img_in, blocksPerGrid, threadsPerBlock);
         sdkStopTimer(&timer);
         printf("   HSL processing time (CPU timer): %f (ms)\n", sdkGetTimerValue(&timer));
         sdkDeleteTimer(&timer);
@@ -71,7 +134,7 @@ void run_gpu_color_test(PPM_IMG img_in) {
         // Perform YUV constrast enhancement
         sdkCreateTimer(&timer);
         sdkStartTimer(&timer);
-        img_obuf_yuv = gpu_contrast_enhancement_c_yuv(img_in);
+        img_obuf_yuv = gpu_contrast_enhancement_c_yuv(img_in, blocksPerGrid, threadsPerBlock);
         sdkStopTimer(&timer);
         printf("   YUV processing time (CPU timer): %f (ms)\n", sdkGetTimerValue(&timer));
         sdkDeleteTimer(&timer);
@@ -86,7 +149,7 @@ void run_gpu_color_test(PPM_IMG img_in) {
         
         // Perform HSL constrast enhancement
         cudaEventRecord(startHSL);
-        img_obuf_hsl = gpu_contrast_enhancement_c_hsl(img_in);
+        img_obuf_hsl = gpu_contrast_enhancement_c_hsl(img_in, blocksPerGrid, threadsPerBlock);
         cudaEventRecord(stopHSL);
         cudaEventSynchronize(stopHSL);
         cudaEventElapsedTime(&hslExecutionMS, startHSL, stopHSL);
@@ -95,7 +158,7 @@ void run_gpu_color_test(PPM_IMG img_in) {
         
         // Perform YUV constrast enhancement
         cudaEventRecord(startYUV);
-        img_obuf_yuv = gpu_contrast_enhancement_c_yuv(img_in);
+        img_obuf_yuv = gpu_contrast_enhancement_c_yuv(img_in, blocksPerGrid, threadsPerBlock);
         cudaEventRecord(stopYUV);
         cudaEventSynchronize(stopYUV);
         cudaEventElapsedTime(&yuvExecutionMS, startYUV, stopYUV);
@@ -110,21 +173,29 @@ void run_gpu_color_test(PPM_IMG img_in) {
 
 
 
-void run_gpu_gray_test(PGM_IMG img_in) {
+void run_gpu_gray_test(PGM_IMG img_in, int blocksPerGrid, int threadsPerBlock) {
+    printf("Starting GPU processing...\n");
+    //TODO: run your GPU implementation here
+    
     StopWatchInterface *timer = NULL;
     cudaEvent_t startEvent, stopEvent;
     float executionMS;
     PGM_IMG img_obuf;
     bool CPU_timer = true;
     
-    printf("Starting GPU processing...\n");
-    //TODO: run your GPU implementation here
+    // Check for valid blocksPerGrid/threadsPerBlock
+    if (threadsPerBlock == 0) {
+        threadsPerBlock = DEFAULT_THREADS_PER_BLOCK;
+    }
+    if (blocksPerGrid == 0) {
+        blocksPerGrid = (img_in.h * img_in.w)/threadsPerBlock + 1;
+    }
     
     if (CPU_timer) {
         sdkCreateTimer(&timer);
         sdkStartTimer(&timer);
         
-        img_obuf = gpu_contrast_enhancement_g(img_in);
+        img_obuf = gpu_contrast_enhancement_g(img_in, blocksPerGrid, threadsPerBlock);
         
         sdkStopTimer(&timer);
         printf("   Processing time (CPU timer): %f (ms)\n", sdkGetTimerValue(&timer));
@@ -135,7 +206,7 @@ void run_gpu_gray_test(PGM_IMG img_in) {
         
         cudaEventRecord(startEvent);
         
-        img_obuf = gpu_contrast_enhancement_g(img_in);
+        img_obuf = gpu_contrast_enhancement_g(img_in, blocksPerGrid, threadsPerBlock);
         
         cudaEventRecord(stopEvent);
         cudaEventSynchronize(stopEvent);
@@ -266,7 +337,7 @@ PPM_IMG read_ppm(const char * path) {
     
     /*Skip the magic number*/
     fscanf(in_file, "%s", sbuf);
-
+    
     //result = malloc(sizeof(PPM_IMG));
     fscanf(in_file, "%d",&result.w);
     fscanf(in_file, "%d",&result.h);
@@ -299,7 +370,7 @@ PPM_IMG read_ppm(const char * path) {
 
 void write_ppm(PPM_IMG inputImage, const char * destinationPath) {
     FILE *outputFile;
-
+    
     char *outputBuffer = (char *)malloc(3 * inputImage.w * inputImage.h * sizeof(char));
     
     // Copy input

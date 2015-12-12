@@ -9,7 +9,7 @@
 // helper for shared that are common to CUDA Samples
 #include <helper_functions.h>
 
-__global__ void rgb2yuv_work(int img_size, unsigned char* gpu_img_in_r, unsigned char* gpu_img_in_g, unsigned char* gpu_img_in_b,
+__global__ void rgb2yuv_kernel(int img_size, unsigned char* gpu_img_in_r, unsigned char* gpu_img_in_g, unsigned char* gpu_img_in_b,
 				 unsigned char* gpu_img_out_y, unsigned char* gpu_img_out_u, unsigned char* gpu_img_out_v){
 	unsigned char r, g, b;
 
@@ -27,7 +27,7 @@ __global__ void rgb2yuv_work(int img_size, unsigned char* gpu_img_in_r, unsigned
 }
 
 //Convert RGB to YUV, all components in [0, 255]
-YUV_IMG gpu_rgb2yuv(PPM_IMG img_in)
+YUV_IMG gpu_rgb2yuv(PPM_IMG img_in, int blocksPerGrid, int threadsPerBlock)
 {
     YUV_IMG img_out;
     int img_size = img_in.w*img_in.h;
@@ -56,7 +56,7 @@ YUV_IMG gpu_rgb2yuv(PPM_IMG img_in)
     cudaMemcpy( gpu_img_in_b, img_in.img_b, img_size * sizeof(unsigned char), cudaMemcpyHostToDevice );
 
     // call kernel
-    rgb2yuv_work<<<img_size/512+1,512>>>(img_size, gpu_img_in_r, gpu_img_in_g, gpu_img_in_b, gpu_img_out_y, gpu_img_out_u, gpu_img_out_v);
+    rgb2yuv_kernel<<<blocksPerGrid, threadsPerBlock>>>(img_size, gpu_img_in_r, gpu_img_in_g, gpu_img_in_b, gpu_img_out_y, gpu_img_out_u, gpu_img_out_v);
 
     // Copy resultant image from gpu
     cudaMemcpy( img_out.img_y, gpu_img_out_y, img_size * sizeof(unsigned char), cudaMemcpyDeviceToHost );
@@ -74,7 +74,7 @@ YUV_IMG gpu_rgb2yuv(PPM_IMG img_in)
     return img_out;
 }
 
-__global__ void yuv2rgb_work(int img_size, unsigned char* gpu_img_in_y, unsigned char* gpu_img_in_u, unsigned char* gpu_img_in_v,
+__global__ void yuv2rgb_kernel(int img_size, unsigned char* gpu_img_in_y, unsigned char* gpu_img_in_u, unsigned char* gpu_img_in_v,
 				 unsigned char* gpu_img_out_r, unsigned char* gpu_img_out_g, unsigned char* gpu_img_out_b){
 	int rt,gt,bt;
 	int rt2, gt2, bt2;
@@ -97,7 +97,7 @@ __global__ void yuv2rgb_work(int img_size, unsigned char* gpu_img_in_y, unsigned
 }
 
 //Convert YUV to RGB, all components in [0, 255]
-PPM_IMG gpu_yuv2rgb(YUV_IMG img_in)
+PPM_IMG gpu_yuv2rgb(YUV_IMG img_in, int blocksPerGrid, int threadsPerBlock)
 {
     PPM_IMG img_out;
     
@@ -126,7 +126,7 @@ PPM_IMG gpu_yuv2rgb(YUV_IMG img_in)
     cudaMemcpy( gpu_img_in_v, img_in.img_v, img_size * sizeof(unsigned char), cudaMemcpyHostToDevice );
 
     // call kernel
-    yuv2rgb_work<<<img_size/512+1,512>>>(img_size, gpu_img_in_y, gpu_img_in_u, gpu_img_in_v, gpu_img_out_r, gpu_img_out_g, gpu_img_out_b);
+    yuv2rgb_kernel<<<blocksPerGrid, threadsPerBlock>>>(img_size, gpu_img_in_y, gpu_img_in_u, gpu_img_in_v, gpu_img_out_r, gpu_img_out_g, gpu_img_out_b);
 
     // Copy resultant image from gpu
     cudaMemcpy( img_out.img_r, gpu_img_out_r, img_size * sizeof(unsigned char), cudaMemcpyDeviceToHost );

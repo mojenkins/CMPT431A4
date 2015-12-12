@@ -60,7 +60,7 @@ PGM_IMG contrast_enhancement_g(PGM_IMG img_in) {
 
 
 
-PGM_IMG gpu_contrast_enhancement_g(PGM_IMG img_in) {
+PGM_IMG gpu_contrast_enhancement_g(PGM_IMG img_in, int blocksPerGrid, int threadsPerBlock) {
     PGM_IMG result;
     int hist[imageDepth];
     
@@ -69,10 +69,10 @@ PGM_IMG gpu_contrast_enhancement_g(PGM_IMG img_in) {
     result.img = (unsigned char *)malloc(result.w * result.h * sizeof(unsigned char));
     
     // Calculate histogram from image
-    gpu_histogram(hist, img_in.img, img_in.h * img_in.w, imageDepth);
+    gpu_calculate_histogram(hist, img_in.img, img_in.h * img_in.w, imageDepth, blocksPerGrid, threadsPerBlock);
     
     // Perform histogram equalization
-    gpu_histogram_equalization(result.img, img_in.img, hist, result.w*result.h, imageDepth);
+    gpu_histogram_equalization(result.img, img_in.img, hist, result.w*result.h, imageDepth, blocksPerGrid, threadsPerBlock);
     
     return result;
 }
@@ -126,7 +126,7 @@ PPM_IMG contrast_enhancement_c_yuv(PPM_IMG img_in) {
     return result;
 }
 
-PPM_IMG gpu_contrast_enhancement_c_yuv(PPM_IMG img_in)
+PPM_IMG gpu_contrast_enhancement_c_yuv(PPM_IMG img_in, int blocksPerGrid, int threadsPerBlock)
 {
     YUV_IMG yuv_med;
     PPM_IMG result;
@@ -134,17 +134,17 @@ PPM_IMG gpu_contrast_enhancement_c_yuv(PPM_IMG img_in)
     unsigned char * y_equ;
     int hist[256];
     
-    yuv_med = gpu_rgb2yuv(img_in);
+    yuv_med = gpu_rgb2yuv(img_in, blocksPerGrid, threadsPerBlock);
     y_equ = (unsigned char *)malloc(yuv_med.h*yuv_med.w*sizeof(unsigned char));
     
-    gpu_histogram(hist, yuv_med.img_y, yuv_med.h * yuv_med.w, 256);
-    gpu_histogram_equalization(y_equ,yuv_med.img_y,hist,yuv_med.h * yuv_med.w, 256);
+    gpu_calculate_histogram(hist, yuv_med.img_y, yuv_med.h * yuv_med.w, 256, blocksPerGrid, threadsPerBlock);
+    gpu_histogram_equalization(y_equ,yuv_med.img_y,hist,yuv_med.h * yuv_med.w, 256, blocksPerGrid, threadsPerBlock);
 
     free(yuv_med.img_y);
     yuv_med.img_y = y_equ;
     free(y_equ);
     
-    result = gpu_yuv2rgb(yuv_med);
+    result = gpu_yuv2rgb(yuv_med, blocksPerGrid, threadsPerBlock);
     free(yuv_med.img_y);
     free(yuv_med.img_u);
     free(yuv_med.img_v);
@@ -178,25 +178,24 @@ PPM_IMG contrast_enhancement_c_hsl(PPM_IMG img_in) {
 
 
 
-PPM_IMG gpu_contrast_enhancement_c_hsl(PPM_IMG img_in) {
+PPM_IMG gpu_contrast_enhancement_c_hsl(PPM_IMG img_in, int blocksPerGrid, int threadsPerBlock) {
     HSL_IMG imageHSL;
     PPM_IMG result;
     
     unsigned char * equalizedL;
     int hist[imageDepth];
     
-    imageHSL = gpu_rgb2hsl(img_in); //*** GPU accelerated RGB to HSL conversion
-    //imageHSL = rgb2hsl(img_in);
+    imageHSL = gpu_rgb2hsl(img_in, blocksPerGrid, threadsPerBlock); //*** GPU accelerated RGB to HSL conversion
     equalizedL = (unsigned char *)malloc(imageHSL.height*imageHSL.width*sizeof(unsigned char));
     
-    gpu_histogram(hist, imageHSL.l, imageHSL.height * imageHSL.width, imageDepth);
-    gpu_histogram_equalization(equalizedL, imageHSL.l, hist,imageHSL.width * imageHSL.height, imageDepth);
+    gpu_calculate_histogram(hist, imageHSL.l, imageHSL.height * imageHSL.width, imageDepth, blocksPerGrid, threadsPerBlock);
+    gpu_histogram_equalization(equalizedL, imageHSL.l, hist,imageHSL.width * imageHSL.height, imageDepth, blocksPerGrid, threadsPerBlock);
     
     free(imageHSL.l);
     imageHSL.l = equalizedL;
     free(equalizedL);
     
-    result = gpu_hsl2rgb(imageHSL);
+    result = gpu_hsl2rgb(imageHSL, blocksPerGrid, threadsPerBlock);
     free(imageHSL.h);
     free(imageHSL.s);
     free(imageHSL.l);

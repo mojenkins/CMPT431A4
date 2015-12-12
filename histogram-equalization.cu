@@ -9,62 +9,61 @@
 // helper for shared that are common to CUDA Samples
 #include <helper_functions.h>
 
-__global__ void histogram_work(int img_size, unsigned char* gpu_img_in, int * gpu_hist){
-
+__global__ void histogram_calculation_kernel(int img_size, unsigned char* gpu_img_in, int * gpu_hist){
+    
     if (blockIdx.x*blockDim.x + threadIdx.x < 256){
         gpu_hist[blockIdx.x*blockDim.x + threadIdx.x] = 0;
     }
-
+    
     if (blockIdx.x*blockDim.x + threadIdx.x < img_size){
         atomicAdd(&gpu_hist[gpu_img_in[blockIdx.x*blockDim.x + threadIdx.x]], 1);
     }
 }
 
-void gpu_histogram(int * hist_out, unsigned char * img_in, int img_size, int nbr_bin){
+void gpu_calculate_histogram(int * hist_out, unsigned char * img_in, int img_size, int nbr_bin, int blocksPerGrid, int threadsPerBlock){
     // Set up pointers for gpu device memory
     unsigned char * gpu_img_in;
-    int  * gpu_hist; 
-
+    int  * gpu_hist;
+    
     // Allocate memory for img_in, hist_in, lut, and img_out
     cudaMalloc( (void**)&gpu_img_in, img_size * sizeof(unsigned char) );
     cudaMalloc( (void**)&gpu_hist, (nbr_bin) * sizeof(int) );
-
+    
     // Copy img_in to gpu
     cudaMemcpy( gpu_img_in, img_in, img_size * sizeof(unsigned char), cudaMemcpyHostToDevice );
     
     // call kernel
-    histogram_work<<<img_size/512+1,512>>>(img_size, gpu_img_in, gpu_hist);
-
+    histogram_calculation_kernel<<<blocksPerGrid, threadsPerBlock>>>(img_size, gpu_img_in, gpu_hist);
+    
     // copy back (using cudaMemcpy) gpu_img_out to img_out
-    cudaMemcpy( hist_out, gpu_hist, nbr_bin * sizeof(int), cudaMemcpyDeviceToHost );
-
+    cudaMemcpy(hist_out, gpu_hist, nbr_bin * sizeof(int), cudaMemcpyDeviceToHost );
+    
     // free gpu memory
     cudaFree(gpu_img_in);
     cudaFree(gpu_hist);
 }
 
-__global__ void histogram_equilization_work(int img_size, int* gpu_lut, unsigned char* gpu_img_in, unsigned char* gpu_img_out){
-	
-	int index = blockIdx.x*blockDim.x + threadIdx.x;
-	__shared__ int shared_lut[256];
 
-	if (threadIdx.x < 256){
-		shared_lut[threadIdx.x] = gpu_lut[threadIdx.x];
-	}
 
-	__syncthreads();
 
-	if (index < img_size){
-    	gpu_img_out[index] = (unsigned char) (shared_lut[gpu_img_in[index]] > 255) ? 255 : (unsigned char) shared_lut[gpu_img_in[index]];
-	}
+__global__ void histogram_equilization_kernel(int img_size, int* gpu_lut, unsigned char* gpu_img_in, unsigned char* gpu_img_out){
+    
+    int index = blockIdx.x*blockDim.x + threadIdx.x;
+    __shared__ int shared_lut[256];
+    
+    if (threadIdx.x < 256){
+        shared_lut[threadIdx.x] = gpu_lut[threadIdx.x];
+    }
+    
+    __syncthreads();
+    
+    if (index < img_size){
+        gpu_img_out[index] = (unsigned char) (shared_lut[gpu_img_in[index]] > 255) ? 255 : (unsigned char) shared_lut[gpu_img_in[index]];
+    }
 }
 
 
-void gpu_histogram_equalization(unsigned char * img_out,
-                                unsigned char * img_in,
-                                int * hist_in,
-                                int img_size,
-                                int nbr_bin) {
+void gpu_histogram_equalization(unsigned char * img_out, unsigned char * img_in, int * hist_in, int img_size, int nbr_bin, int blocksPerGrid, int threadsPerBlock) {
     
     int *lut = (int *)malloc(sizeof(int)*nbr_bin);
     int i, min, d, cdf;
@@ -105,7 +104,7 @@ void gpu_histogram_equalization(unsigned char * img_out,
     free(lut);
     
     // call kernel
-    histogram_equilization_work<<<img_size/512+1,512>>>(img_size, gpu_lut, gpu_img_in, gpu_img_out);
+    histogram_equilization_kernel<<<blocksPerGrid, threadsPerBlock>>>(img_size, gpu_lut, gpu_img_in, gpu_img_out);
     
     // copy back (using cudaMemcpy) gpu_img_out to img_out
     cudaMemcpy( img_out, gpu_img_out, img_size * sizeof(unsigned char), cudaMemcpyDeviceToHost );
