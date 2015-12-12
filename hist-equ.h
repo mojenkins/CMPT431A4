@@ -34,7 +34,7 @@ typedef struct
 } HSL_IMG;
 
     
-
+// Image Read/Write
 PPM_IMG read_ppm(const char * path);
 void write_ppm(PPM_IMG img, const char * path);
 void free_ppm(PPM_IMG img);
@@ -43,43 +43,39 @@ PGM_IMG read_pgm(const char * path);
 void write_pgm(PGM_IMG img, const char * path);
 void free_pgm(PGM_IMG img);
 
-HSL_IMG rgb2hsl(PPM_IMG img_in);
-HSL_IMG gpu_rgb2hsl(PPM_IMG img_in);
-PPM_IMG hsl2rgb(HSL_IMG img_in);
-PPM_IMG gpu_hsl2rgb(HSL_IMG img_in);
-
-YUV_IMG rgb2yuv(PPM_IMG img_in);
-PPM_IMG yuv2rgb(YUV_IMG img_in);    
-
-YUV_IMG gpu_rgb2yuv(PPM_IMG img_in);
-PPM_IMG gpu_yuv2rgb(YUV_IMG img_in);
-
+// Main CPU functions
 void histogram(int * hist_out, unsigned char * img_in, int img_size, int nbr_bin);
-void histogram_equalization(unsigned char * img_out, unsigned char * img_in, 
-                            int * hist_in, int img_size, int nbr_bin);
+void histogram_equalization(unsigned char * img_out, unsigned char * img_in, int * hist_in, int img_size, int nbr_bin);
 
-void gpu_histogram(int * hist_out, unsigned char * img_in, int img_size, int nbr_bin);
-void gpu_histogram_equalization(unsigned char * img_out, unsigned char * img_in, 
-                            int * hist_in, int img_size, int nbr_bin);
-
+// Main GPU functions
+void gpu_calculate_histogram(int * hist_out, unsigned char * img_in, int img_size, int nbr_bin,
+                             int blocksPerGrid, int threadsPerBlock);
+void gpu_histogram_equalization(unsigned char * img_out, unsigned char * img_in, int * hist_in, int img_size, int nbr_bin,
+                                int blocksPerGrid, int threadsPerBlock);
 bool cuda_test();
 
 
-//Contrast enhancement for gray-scale images
+// CPU Image Transformations
+HSL_IMG rgb2hsl(PPM_IMG img_in);
+PPM_IMG hsl2rgb(HSL_IMG img_in);
+YUV_IMG rgb2yuv(PPM_IMG img_in);
+PPM_IMG yuv2rgb(YUV_IMG img_in);
+
+// GPU Image Transformations
+HSL_IMG gpu_rgb2hsl(PPM_IMG img_in, int blocksPerGrid, int threadsPerBlock);
+PPM_IMG gpu_hsl2rgb(HSL_IMG img_in, int blocksPerGrid, int threadsPerBlock);
+YUV_IMG gpu_rgb2yuv(PPM_IMG img_in, int blocksPerGrid, int threadsPerBlock);
+PPM_IMG gpu_yuv2rgb(YUV_IMG img_in, int blocksPerGrid, int threadsPerBlock);
+
+// CPU Contrast Enhancement
 PGM_IMG contrast_enhancement_g(PGM_IMG img_in);
-
-//Gpu version
-PGM_IMG gpu_contrast_enhancement_g(PGM_IMG img_in);
-PPM_IMG gpu_contrast_enhancement_c_yuv(PPM_IMG img_in);
-PPM_IMG gpu_contrast_enhancement_c_hsl(PPM_IMG img_in);
-
-//Contrast enhancement for color images
 PPM_IMG contrast_enhancement_c_rgb(PPM_IMG img_in);
 PPM_IMG contrast_enhancement_c_yuv(PPM_IMG img_in);
 PPM_IMG contrast_enhancement_c_hsl(PPM_IMG img_in);
 
-PPM_IMG gpu_contrast_enhancement_c_yuv(PPM_IMG img_in);
-
-
+// GPU Contrast Enhancement
+PGM_IMG gpu_contrast_enhancement_g(PGM_IMG img_in, int blocksPerGrid, int threadsPerBlock);
+PPM_IMG gpu_contrast_enhancement_c_yuv(PPM_IMG img_in, int blocksPerGrid, int threadsPerBlock);
+PPM_IMG gpu_contrast_enhancement_c_hsl(PPM_IMG img_in, int blocksPerGrid, int threadsPerBlock);
 
 #endif
